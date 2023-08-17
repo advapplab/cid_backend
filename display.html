@@ -28,6 +28,7 @@
         });
 
         const data = await response.json();
+        console.log(data);
 
         // Assuming the API returns a JSON object with the image data in a field called 'image'
         const base64ImageData = data.image;
@@ -35,11 +36,11 @@
         // Set the base64 data as the src of the image
         const imageElement = document.getElementById('base64Image');
         imageElement.src = 'data:image/png;base64,' + base64ImageData;
+        console.log(base64ImageData);
     }
 
     // Call the function to fetch and display the image
     fetchAndDisplayImage();
-    console.log(base64ImageData);
 </script>
 
 </body>
