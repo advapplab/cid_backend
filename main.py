@@ -15,7 +15,7 @@ mdb_pass = os.getenv('MONGODB_PASSWORD')
 mdb_host = os.getenv('MONGODB_HOST')
 mdb_dbs = os.getenv('MONGODB_DATABASE')
 
-sd_host = os.getenv('SD_HOST')
+sd_host = 'http://140.119.112.78:8824'
 sr_host = 'http://140.119.112.78:8828'
 
 app = Flask(__name__, static_folder="/")
@@ -58,6 +58,9 @@ def image_to_base64(img: Image.Image, format: str = "PNG") -> str:
     img_str = base64.b64encode(buffered.getvalue()).decode()
     return img_str
 
+
+
+
 @app.route("/get_qr", methods=['POST'])
 def gen_qr():
 
@@ -66,11 +69,9 @@ def gen_qr():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
 
     qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&filename={}&openfolder=normal&ep='.format(sr_host, filename, filename)
-    print('qnap_url: ' + qnap_url)
 
     qr_img = qrcode.make(qnap_url)
     qr_img_base64 = image_to_base64(qr_img)
-    print('qr_img_base64: ', qr_img_base64)
 
     # return send_file('qr_code.png', mimetype='image/png')
 
@@ -78,14 +79,18 @@ def gen_qr():
     res['image'] = qr_img_base64
     res = make_response(jsonify(res), 200)
 
-    print('res:', res)
-
     return res
 
 
 
-@app.route("/get_image", methods=['GET'])
+@app.route("/get_image", methods=['POST'])
 def gen_image():
+
+    # print(request)
+    jsonobj = request.get_json(silent=True)
+    filename = json.dumps(jsonobj['filename']).replace("\"", "")
+
+
     # choose a random 
     option1 = random.choice(options_character)
     option2 = random.choice(options_location)
@@ -94,7 +99,6 @@ def gen_image():
     prompt = "in location, a person, alone, facing the camera, solo, skin detail, face detail, Taiwanese, raw photo ,8K HDR, hyper-realistic, half body shot, hyper detailed, cinematic lighting"
     prompt = prompt.replace("a person", option1).replace("in location", option2)
     neg_prompt = "nsfw, nude, censored, ((duplication)), more than one person, text, watermark, blurry background, naked, half naked, topless, wearing underwear, showing thighs, showing chest, deformed iris, deformed pupils, out of frame, cropped, not wearing pants,semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers:1.4), (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation, worst quality, normal quality, low quality, low res, blurry, text, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch ,duplicate, ugly, monochrome, horror, geometry, mutation, disgusting, bad anatomy, bad hands, three hands, three legs, bad arms, missing legs, missing arms, poorly drawn face, bad face, fused face, cloned face, worst face, three crus, extra crus, fused crus, worst feet, three feet, fused feet, fused thigh, three thigh, fused thigh, extra thigh, worst thigh, missing fingers, extra fingers, ugly fingers, long fingers, horn, extra eyes, huge eyes, 2girl, amputation, disconnected limbs, cartoon, cg, 3d, unreal, animate"
-
 
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
@@ -105,10 +109,15 @@ def gen_image():
     response = submit_post(sd_host, data)
     image_base64 = response.json()['images'][0]
 
-    with open('gen_image.png', "wb") as image_file:
+    with open(filename, "wb") as image_file:
         image_file.write(base64.b64decode(image_base64))
     
-    return send_file('gen_image.png', mimetype='image/png')
+    # return send_file('gen_image.png', mimetype='image/png')
+    res = dict()
+    res['image'] = image_base64
+    res = make_response(jsonify(res), 200)
+
+    return res
 
 
 @app.route('/')

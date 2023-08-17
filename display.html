@@ -8,10 +8,11 @@
 </head>
 <body>
 
+<img id="base64Image_qr" alt="Image from API" />
 <img id="base64Image" alt="Image from API" />
 
 <script>
-    async function fetchAndDisplayImage() {
+    async function fetchAndDisplayQRImage() {
         // Define the data you want to send with the POST request
         const postData = {
             // Example data to send with the request
@@ -20,6 +21,33 @@
 
         // Fetch the base64 encoded image data from the RESTful API
         const response = await fetch('http://140.119.112.78:8829/get_qr', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        });
+
+        const data = await response.json();
+
+        // Assuming the API returns a JSON object with the image data in a field called 'image'
+        const base64ImageData = data.image;
+
+        // Set the base64 data as the src of the image
+        const imageElement = document.getElementById('base64Image_qr');
+        imageElement.src = 'data:image/png;base64,' + base64ImageData;
+    }
+
+
+    async function fetchAndDisplayImage() {
+        // Define the data you want to send with the POST request
+        const postData = {
+            // Example data to send with the request
+            "filename": "0003.png"
+        };
+
+        // Fetch the base64 encoded image data from the RESTful API
+        const response = await fetch('http://140.119.112.78:8829/get_image', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,6 +69,8 @@
 
     // Call the function to fetch and display the image
     fetchAndDisplayImage();
+    fetchAndDisplayQRImage();
+
 </script>
 
 </body>
