@@ -94,7 +94,7 @@ def gen_image():
 
 
 
-@app.route("/", methods=['GET'])
+@app.route("/test", methods=['GET'])
 def home():
 
     # # choose a random 
