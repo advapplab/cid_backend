@@ -55,7 +55,7 @@
             body: JSON.stringify(postData)
         });
 
-        data = await response.json();
+        data = response.json();
         console.log(data);
 
         // Assuming the API returns a JSON object with the image data in a field called 'image'
