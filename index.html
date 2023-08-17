@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<img id="fetchedImage" alt="Fetched image will be displayed here">
+<img id="QRImage" alt="Fetched image will be displayed here">
+<img id="Image" alt="Fetched image will be displayed here">
 
 <script>
     // URL of the image you want to fetch
@@ -18,7 +19,22 @@
         .then(response => response.blob())
         .then(blob => {
             const imageUrl = URL.createObjectURL(blob);
-            document.getElementById('fetchedImage').src = imageUrl;
+            document.getElementById('QRImage').src = imageUrl;
+        })
+        .catch(error => {
+            console.error('Error fetching the image:', error);
+        });
+
+
+
+    const mageURL = 'https://cidbackend.owen198.repl.co/gen_image.png';
+
+    // Fetch the image and display it
+    fetch(mageURL)
+        .then(response => response.blob())
+        .then(blob => {
+            const mageURL = URL.createObjectURL(blob);
+            document.getElementById('Image').src = mageURL;
         })
         .catch(error => {
             console.error('Error fetching the image:', error);
