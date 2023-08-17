@@ -17,7 +17,7 @@
         // Function to fetch image from API and display
         async function fetchAndDisplayQRImage() {
             try {
-                const response = await fetch('http://cidbackend.owen198.repl.co/get_qr');
+                const response = await fetch('https://cidbackend.owen198.repl.co/get_qr');
                 if (!response.ok) {
                     throw new Error('Failed to fetch the image');
                 }
@@ -34,7 +34,7 @@
         // Function to fetch image from API and display
         async function fetchAndDisplayImage() {
             try {
-                const response = await fetch('http://cidbackend.owen198.repl.co/get_image');
+                const response = await fetch('https://cidbackend.owen198.repl.co/get_image');
                 if (!response.ok) {
                     throw new Error('Failed to fetch the image');
                 }
