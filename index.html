@@ -4,26 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Base64 Image</title>
+    <title>Display Two Base64 Images</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-    <img id="base64Image" alt="Image from Base64">
+    <img id="base64Image1" alt="Image 1 from Base64">
+    <img id="base64Image2" alt="Image 2 from Base64">
 
     <script>
         $(document).ready(function () {
-            // Assuming your RESTful API endpoint is 'http://yourapi.com/get_image_base64'
-            $.get('cidbackend.owen198.repl.co', function(data) {
-                // Assuming your API returns a JSON object like { "image": "base64string..." }
-                var base64String = data.image;
-
-                // Convert base64 string into an image source
-                var imgSrc = "data:image/jpeg;base64," + base64String;
+            // Assuming your RESTful API endpoint is 'http://yourapi.com/get_two_images_base64'
+            $.get('http://cidbackend.owen198.repl.co', function(data) {
                 
-                // Set the image source to display the image
-                $('#base64Image').attr('src', imgSrc);
+                // Convert base64 strings into image sources
+                var imgSrc1 = "data:image/jpeg;base64," + data.image1;
+                var imgSrc2 = "data:image/jpeg;base64," + data.image2;
+                
+                // Set the image sources to display the images
+                $('#base64Image1').attr('src', imgSrc1);
+                $('#base64Image2').attr('src', imgSrc2);
             });
         });
     </script>

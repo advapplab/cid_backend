@@ -103,7 +103,7 @@ def home():
     # print(return_json)
 
 
-    return jsonify({'image': image_base64})
+    return return_dict
     # return send_file('gen_image.png', mimetype='image/png')
 
 if __name__ == "__main__":
