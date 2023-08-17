@@ -64,15 +64,13 @@ def gen_qr():
     # print(request)
     jsonobj = request.get_json(silent=True)
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
+    print('filename:' + filename)
 
     qr_filename = 'qr_' + filename + '.png'
     qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&{}&openfolder=normal&ep='.format(sr_host, qr_filename, qr_filename)
 
     qr_img = qrcode.make(qnap_url)
-    # qr_img.save('qr_code.png', 'PNG')
-
     qr_img_base64 = image_to_base64(qr_img)
-    print(qr_img_base64)
 
     # return send_file('qr_code.png', mimetype='image/png')
 
