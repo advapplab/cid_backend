@@ -43,7 +43,7 @@
         // Define the data you want to send with the POST request
         const postData = {
             // Example data to send with the request
-            "filename": "0003.png"
+            "filename": filename
         };
 
         // Fetch the base64 encoded image data from the RESTful API
@@ -67,6 +67,7 @@
         console.log(base64ImageData);
     }
 
+    filename = 'a0003.png'
     // Call the function to fetch and display the image
     fetchAndDisplayImage();
     fetchAndDisplayQRImage();
