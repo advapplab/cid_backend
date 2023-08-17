@@ -17,7 +17,7 @@ mdb_dbs = os.getenv('MONGODB_DATABASE')
 
 sd_host = os.getenv('SD_HOST')
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="/")
 
 options_character = ["a female doll", "a male doll", "a female warrior", "a prince", 'a male doctor', "a female doctor", 'a cyberpunk samurai', 'a steampunk samurai', 'Margot Robbie', 'Anne Hathaway',
                 "a princess", "a male mermaid", "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
