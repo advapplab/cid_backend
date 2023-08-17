@@ -90,7 +90,8 @@ def gen_image():
 
     with open('gen_image.png', "wb") as image_file:
         image_file.write(base64.b64decode(image_base64))
-        return send_file('gen_image.png', mimetype='image/png')
+    
+    return send_file('gen_image.png', mimetype='image/png')
 
 
 @app.route('/')
