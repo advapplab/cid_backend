@@ -57,6 +57,7 @@ def submit_post(url: str, data: dict):
 @app.route("/get_qr", methods=['POST'])
 def gen_qr():
 
+    print(request)
     jsonobj = request.get_json(silent=True)
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
 
@@ -64,7 +65,7 @@ def gen_qr():
     qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&{}&openfolder=normal&ep='.format(sr_host, qr_filename, qr_filename)
 
     qr_img = qrcode.make(qnap_url)
-    qr_img.save('qr_code.png', 'PNG')
+    # qr_img.save('qr_code.png', 'PNG')
 
     buffered = io.BytesIO()
     qr_img.save(buffered, format="JPEG")  # You can change format to PNG or other file types
@@ -73,7 +74,6 @@ def gen_qr():
     # return send_file('qr_code.png', mimetype='image/png')
 
     res = dict()
-    res['success'] = False
     res['image'] = qr_img_base64
     res = make_response(jsonify(res), 200)
 
