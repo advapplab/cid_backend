@@ -80,8 +80,8 @@ def home():
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'width': 128,
-            'height': 128}
+            'width': 32,
+            'height': 32}
 
     response = submit_post(sd_host, data)
     image_base64 = response.json()['images'][0]
@@ -97,13 +97,13 @@ def home():
     return_dict = dict()
     return_dict['image'] = image_base64
     return_dict['qr'] = qr_img_base64  
-    print(return_dict)
+    # print(return_dict)
 
-    return_json = jsonify(return_dict)
-    print(return_json)
+    # return_json = jsonify(return_dict)
+    # print(return_json)
 
 
-    return return_json
+    return jsonify({'image': image_base64})
     # return send_file('gen_image.png', mimetype='image/png')
 
 if __name__ == "__main__":
