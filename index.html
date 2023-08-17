@@ -9,11 +9,13 @@
 
 <body>
 
-    <img id="apiImage" alt="Image from API">
+    <img id="Image" alt="Image from API">
+    <img id="QRImage" alt="Image from API">
+    
 
     <script>
         // Function to fetch image from API and display
-        async function fetchAndDisplayImage() {
+        async function fetchAndDisplayQRImage() {
             try {
                 const response = await fetch('http://cidbackend.owen198.repl.co/get_qr');
                 if (!response.ok) {
@@ -23,13 +25,31 @@
                 const blob = await response.blob();
                 const imageUrl = URL.createObjectURL(blob);
 
-                document.getElementById('apiImage').src = imageUrl;
+                document.getElementById('QRImage').src = imageUrl;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+                // Function to fetch image from API and display
+                async function fetchAndDisplayImage() {
+            try {
+                const response = await fetch('http://cidbackend.owen198.repl.co/get_image');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch the image');
+                }
+                
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+
+                document.getElementById('Image').src = imageUrl;
             } catch (error) {
                 console.error('Error:', error);
             }
         }
 
         // Call the function when the page loads
+        fetchAndDisplayQRImage();
         fetchAndDisplayImage();
     </script>
 
