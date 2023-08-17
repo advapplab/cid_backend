@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from flask import Flask, request, abort, send_file, jsonify
+from flask import Flask, request, abort, send_file, jsonify, send_from_directory
 from PIL import Image
 
 import os
