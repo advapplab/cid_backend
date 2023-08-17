@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch and Display Image</title>
+    <title>Display Image from API</title>
 </head>
+
 <body>
+    <img id="QRImage" alt="Image from API">
+    <img id="Image" alt="Image from API">
+    
+    
 
-<img id="QRImage" alt="Fetched image will be displayed here">
-<img id="Image" alt="Fetched image will be displayed here">
+    <script>
+        // Function to fetch image from API and display
+        async function fetchAndDisplayQRImage() {
+            try {
+                const response = await fetch('http://cidbackend.owen198.repl.co/get_qr');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch the image');
+                }
+                
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
 
-<script>
-    // URL of the image you want to fetch
-    const imageURL = 'https://cidbackend.owen198.repl.co/qr_code.png';
+                document.getElementById('QRImage').src = imageUrl;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
 
-    // Fetch the image and display it
-    fetch(imageURL)
-        .then(response => response.blob())
-        .then(blob => {
-            const imageUrl = URL.createObjectURL(blob);
-            document.getElementById('QRImage').src = imageUrl;
-        })
-        .catch(error => {
-            console.error('Error fetching the image:', error);
-        });
+        // Function to fetch image from API and display
+        async function fetchAndDisplayImage() {
+            try {
+                const response = await fetch('http://cidbackend.owen198.repl.co/get_image');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch the image');
+                }
+                
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
 
+                document.getElementById('Image').src = imageUrl;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
 
-
-    const mageURL = 'https://cidbackend.owen198.repl.co/gen_image.png';
-
-    // Fetch the image and display it
-    fetch(mageURL)
-        .then(response => response.blob())
-        .then(blob => {
-            const mageURL = URL.createObjectURL(blob);
-            document.getElementById('Image').src = mageURL;
-        })
-        .catch(error => {
-            console.error('Error fetching the image:', error);
-        });
-</script>
+        // Call the function when the page loads
+        fetchAndDisplayQRImage();
+        fetchAndDisplayImage();
+    </script>
 
 </body>
+
 </html>
