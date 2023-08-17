@@ -44,7 +44,7 @@ options_location = ['in the forest', 'in front of a neon building', 'in the stea
 @app.route("/", methods=['GET'])
 def home():
 
-    qr_img = qrcode.make(qnap_url)
+    qr_img = qrcode.make('http://')
 
 
     return qr_img
