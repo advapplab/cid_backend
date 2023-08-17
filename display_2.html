@@ -73,8 +73,12 @@
     const filename = Date.now().toString()+'.png';
     // filename = 'a0003.png'
     // Call the function to fetch and display the image
-    fetchAndDisplayImage();
-    fetchAndDisplayQRImage();
+    // fetchAndDisplayImage();
+    // fetchAndDisplayQRImage();
+
+
+
+    fetchAndDisplayImage().then(fetchAndDisplayQRImage);
 </script>
 
 </body>
