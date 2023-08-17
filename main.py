@@ -106,9 +106,9 @@ def gen_image():
             'width': 512,
             'height': 512}
 
-    sd_host = sd_host+'/sdapi/v1/txt2img'
+    sd_api_host = sd_host+'/sdapi/v1/txt2img'
 
-    response = submit_post(sd_host, data)
+    response = submit_post(sd_api_host, data)
     image_base64 = response.json()['images'][0]
 
     with open(filename, "wb") as image_file:
