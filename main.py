@@ -80,8 +80,8 @@ def home():
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'width': 32,
-            'height': 32}
+            'width': 128,
+            'height': 128}
 
     response = submit_post(sd_host, data)
     image_base64 = response.json()['images'][0]
@@ -101,7 +101,7 @@ def home():
 
 
 
-    return send_file('qr_code.png', mimetype='image/png')
+    return send_file('gen_image.png', mimetype='image/png')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
