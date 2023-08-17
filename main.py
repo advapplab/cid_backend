@@ -52,7 +52,11 @@ def submit_post(url: str, data: dict):
     """
     return requests.post(url, data=json.dumps(data))
 
-
+def image_to_base64(img: Image.Image, format: str = "PNG") -> str:
+    buffered = io.BytesIO()
+    img.save(buffered, format=format)
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+    return img_str
 
 @app.route("/get_qr", methods=['POST'])
 def gen_qr():
@@ -67,9 +71,7 @@ def gen_qr():
     qr_img = qrcode.make(qnap_url)
     # qr_img.save('qr_code.png', 'PNG')
 
-    buffered = io.BytesIO()
-    qr_img.save(buffered, format="JPEG")  # You can change format to PNG or other file types
-    qr_img_base64 = base64.b64encode(buffered.getvalue())
+    qr_img_base64 = image_to_base64(qr_img)
     print(qr_img_base64)
 
     # return send_file('qr_code.png', mimetype='image/png')
