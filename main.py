@@ -1,5 +1,6 @@
 from pymongo import MongoClient
-from flask import Flask, request, abort
+from flask import Flask, request, abort, send_file
+from PIL import Image
 
 import os
 import requests
@@ -45,9 +46,9 @@ options_location = ['in the forest', 'in front of a neon building', 'in the stea
 def home():
 
     qr_img = qrcode.make('http://')
+    qr_img.save('qr_code.png', 'PNG')
 
-
-    return qr_img
+    return send_file('qr_code.png', mimetype='image/png')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8080)
