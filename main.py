@@ -16,6 +16,7 @@ mdb_host = os.getenv('MONGODB_HOST')
 mdb_dbs = os.getenv('MONGODB_DATABASE')
 
 sd_host = os.getenv('SD_HOST')
+sr_host = 'http://140.119.112.78:8828'
 
 app = Flask(__name__, static_folder="/")
 
@@ -53,10 +54,16 @@ def submit_post(url: str, data: dict):
 
 
 
-@app.route("/get_qr", methods=['GET'])
+@app.route("/get_qr", methods=['POST'])
 def gen_qr():
 
-    qr_img = qrcode.make('http://')
+    jsonobj = request.get_json(silent=True)
+    filename = json.dumps(jsonobj['filename']).replace("\"", "")
+
+    qr_filename = 'qr_' + filename + '.png'
+    qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&{}&openfolder=normal&ep='.format(sr_host, qr_filename, qr_filename)
+
+    qr_img = qrcode.make(qnap_url)
     qr_img.save('qr_code.png', 'PNG')
 
     buffered = io.BytesIO()
