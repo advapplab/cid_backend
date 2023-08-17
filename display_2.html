@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Base64 Image from POST Request</title>
+</head>
+<body>
+
+<img id="base64Image_qr" alt="Image from API" />
+<img id="base64Image" alt="Image from API" />
+
+<script>
+    function fetchAndDisplayQRImage() {
+        // Define the data you want to send with the POST request
+        postData = {
+            // Example data to send with the request
+            "filename": filename
+        };
+
+        // Fetch the base64 encoded image data from the RESTful API
+        response = fetch(url+'8829/get_qr', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        });
+
+        data = response.json();
+
+        // Assuming the API returns a JSON object with the image data in a field called 'image'
+        base64ImageData = data.image;
+
+        // Set the base64 data as the src of the image
+        imageElement = document.getElementById('base64Image_qr');
+        imageElement.src = 'data:image/png;base64,' + base64ImageData;
+    }
+
+
+    function fetchAndDisplayImage() {
+        // Define the data you want to send with the POST request
+        postData = {
+            // Example data to send with the request
+            "filename": filename
+        };
+
+        // Fetch the base64 encoded image data from the RESTful API
+        response = fetch(url+'8829/get_image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        });
+
+        data = await response.json();
+        console.log(data);
+
+        // Assuming the API returns a JSON object with the image data in a field called 'image'
+        base64ImageData = data.image;
+
+        // Set the base64 data as the src of the image
+        imageElement = document.getElementById('base64Image');
+        imageElement.src = 'data:image/png;base64,' + base64ImageData;
+        console.log(base64ImageData);
+    }
+
+    url = 'http://140.119.112.78:'
+
+    filename = Date.now().toString()+'.png';
+    // filename = 'a0003.png'
+    // Call the function to fetch and display the image
+    fetchAndDisplayImage();
+    fetchAndDisplayQRImage();
+
+</script>
+
+</body>
+</html>
