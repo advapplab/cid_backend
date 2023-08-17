@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from flask import Flask, request, abort, send_file
+from flask import Flask, request, abort, send_file, jsonify
 from PIL import Image
 
 import os
@@ -97,10 +97,10 @@ def home():
     return_dict = dict()
     return_dict['image'] = image_base64
     return_dict['qr'] = qr_img_base64  
+    return_json = jsonify(return_dict)
 
 
-
-    return return_dict
+    return return_json
     # return send_file('gen_image.png', mimetype='image/png')
 
 if __name__ == "__main__":
