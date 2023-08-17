@@ -4,29 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Two Images from Different APIs</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Display Image from API</title>
 </head>
 
 <body>
 
-    <img id="base64Image1" alt="Image from API 1">
-    <img id="base64Image2" alt="Image from API 2">
+    <img id="apiImage" alt="Image from API">
 
     <script>
-        $(document).ready(function () {
-            // Fetch image from API 1
-            $.get('http://cidbackend.owen198.repl.co/get_image', function(data1) {
-                var imgSrc1 = "data:image/jpeg;base64," + data1.image;
-                $('#base64Image1').attr('src', imgSrc1);
-            });
+        // Function to fetch image from API and display
+        async function fetchAndDisplayImage() {
+            try {
+                const response = await fetch('http://cidbackend.owen198.repl.co/get_qr');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch the image');
+                }
+                
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
 
-            // Fetch image from API 2
-            $.get('http://cidbackend.owen198.repl.co/get_qr', function(data2) {
-                var imgSrc2 = "data:image/jpeg;base64," + data2.image;
-                $('#base64Image2').attr('src', imgSrc2);
-            });
-        });
+                document.getElementById('apiImage').src = imageUrl;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Call the function when the page loads
+        fetchAndDisplayImage();
     </script>
 
 </body>
