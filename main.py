@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from flask import Flask, request, abort, send_file, jsonify, send_from_directory
+from flask import Flask, request, abort, send_file, jsonify, send_from_directory, make_response
 from PIL import Image
 
 import os
@@ -70,7 +70,14 @@ def gen_qr():
     qr_img.save(buffered, format="JPEG")  # You can change format to PNG or other file types
     qr_img_base64 = base64.b64encode(buffered.getvalue())
 
-    return send_file('qr_code.png', mimetype='image/png')
+    # return send_file('qr_code.png', mimetype='image/png')
+
+    res = dict()
+    res['success'] = False
+    res['image'] = qr_img_base64
+    res = make_response(jsonify(res), 200)
+
+    return res
 
 
 
