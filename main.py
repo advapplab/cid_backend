@@ -97,6 +97,8 @@ def home():
     return_dict = dict()
     return_dict['image'] = image_base64
     return_dict['qr'] = qr_img_base64  
+    print(return_dict)
+
     return_json = jsonify(return_dict)
     print(return_json)
 
