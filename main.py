@@ -7,7 +7,7 @@ import requests
 import qrcode
 import random
 import json
-
+import base64
 
 mdb_user = os.getenv('MONGODB_USERNAME')
 mdb_pass = os.getenv('MONGODB_PASSWORD')
@@ -53,8 +53,18 @@ def submit_post(url: str, data: dict):
 @app.route("/", methods=['GET'])
 def home():
 
+    # QR Code
     qr_img = qrcode.make('http://')
-    qr_img.save('qr_code.png', 'PNG')
+    # qr_img.save('qr_code.png', 'PNG')
+
+    buffered = io.BytesIO()
+    qr_img.save(buffered, format="JPEG")  # You can change format to PNG or other file types
+    qr_img_base64 = base64.b64encode(buffered.getvalue())
+
+
+
+
+
 
     # choose a random 
     option1 = random.choice(options_character)
@@ -69,11 +79,17 @@ def home():
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'width': 1024,
-            'height': 1024}
+            'width': 32,
+            'height': 32}
 
     response = submit_post(sd_host, data)
-    image_hosted = response.json()['images'][0]
+    image_base64 = response.json()['images'][0]
+
+
+    return_dict = dict()
+    return_dict['image'] = image_base64
+    return_dict['qr'] = qr_img_base64  
+
 
 
 
