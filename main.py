@@ -42,11 +42,38 @@ options_location = ['in the forest', 'in front of a neon building', 'in the stea
                     'in the South park', 'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world'
                 ]
 
+def submit_post(url: str, data: dict):
+    """
+    Submit a POST request to the given URL with the given data.
+    """
+    return requests.post(url, data=json.dumps(data))
+
 @app.route("/", methods=['GET'])
 def home():
 
     qr_img = qrcode.make('http://')
     qr_img.save('qr_code.png', 'PNG')
+
+    # choose a random 
+    option1 = random.choice(options_character)
+    option2 = random.choice(options_location)
+
+    # replace string
+    prompt = "in location, a person, alone, facing the camera, solo, skin detail, face detail, Taiwanese, raw photo ,8K HDR, hyper-realistic, half body shot, hyper detailed, cinematic lighting"
+    prompt = prompt.replace("a person", option1).replace("in location", option2)
+    neg_prompt = "nsfw, nude, censored, ((duplication)), more than one person, text, watermark, blurry background, naked, half naked, topless, wearing underwear, showing thighs, showing chest, deformed iris, deformed pupils, out of frame, cropped, not wearing pants,semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers:1.4), (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation, worst quality, normal quality, low quality, low res, blurry, text, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch ,duplicate, ugly, monochrome, horror, geometry, mutation, disgusting, bad anatomy, bad hands, three hands, three legs, bad arms, missing legs, missing arms, poorly drawn face, bad face, fused face, cloned face, worst face, three crus, extra crus, fused crus, worst feet, three feet, fused feet, fused thigh, three thigh, fused thigh, extra thigh, worst thigh, missing fingers, extra fingers, ugly fingers, long fingers, horn, extra eyes, huge eyes, 2girl, amputation, disconnected limbs, cartoon, cg, 3d, unreal, animate"
+
+
+    data = {'prompt': prompt,
+            "negative_prompt": neg_prompt,
+            "sampler_name": "DPM++ 2M Karras",
+            'width': 1024,
+            'height': 1024}
+
+    response = submit_post(sd_host, data)
+    image_hosted = response.json()['images'][0]
+
+
 
     return send_file('qr_code.png', mimetype='image/png')
 
