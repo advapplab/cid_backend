@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Image from RESTful API</title>
+    <title>Fetch Image</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
 
-<!-- Container to display the image -->
-<img id="fetchedImage" alt="Image from API" width="300">
+    <img id="fetchedImage" src="" alt="Image fetched from API">
 
-<script>
-    // JavaScript function to fetch and display the image
-    async function fetchAndDisplayImage() {
-        const imageUrl = 'https://wanin-line-bot.owen198.repl.co/';
-        
-        // Fetch the image
-        const response = await fetch(imageUrl);
-        
-        // Convert the image to a blob
-        const imageBlob = await response.blob();
-
-        // Convert blob to a local URL and set as image source
-        const blobUrl = URL.createObjectURL(imageBlob);
-        document.getElementById('fetchedImage').src = blobUrl;
-    }
-
-    // Call the function on page load
-    fetchAndDisplayImage();
-
-</script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://cidbackend.owen198.repl.co/',
+                type: 'GET',
+                success: function (data) {
+                    let image_data = 'data:image/jpeg;base64,' + data.image;
+                    $('#fetchedImage').attr('src', image_data);
+                },
+                error: function (error) {
+                    console.log("Error fetching image:", error);
+                }
+            });
+        });
+    </script>
 
 </body>
+
 </html>
