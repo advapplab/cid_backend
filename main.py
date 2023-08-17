@@ -76,7 +76,7 @@ def gen_qr():
 
     res = dict()
     res['image'] = qr_img_base64
-    # res = make_response(jsonify(res), 200)
+    res = make_response(jsonify(res), 200)
 
     print('res:', res)
 
