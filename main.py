@@ -111,7 +111,8 @@ def gen_image():
     response = submit_post(sd_api_host, data)
     image_base64 = response.json()['images'][0]
 
-    with open(filename, "wb") as image_file:
+    path = '../sd_image/'
+    with open(path+filename, "wb") as image_file:
         image_file.write(base64.b64decode(image_base64))
     
     # return send_file('gen_image.png', mimetype='image/png')
