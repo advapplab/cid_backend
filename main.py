@@ -61,7 +61,7 @@ def image_to_base64(img: Image.Image, format: str = "PNG") -> str:
 @app.route("/get_qr", methods=['POST'])
 def gen_qr():
 
-    print(request)
+    # print(request)
     jsonobj = request.get_json(silent=True)
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
 
