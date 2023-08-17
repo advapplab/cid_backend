@@ -4,26 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Two Base64 Images</title>
+    <title>Display Two Images from Different APIs</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-    <img id="base64Image1" alt="Image 1 from Base64">
-    <img id="base64Image2" alt="Image 2 from Base64">
+    <img id="base64Image1" alt="Image from API 1">
+    <img id="base64Image2" alt="Image from API 2">
 
     <script>
         $(document).ready(function () {
-            // Assuming your RESTful API endpoint is 'http://yourapi.com/get_two_images_base64'
-            $.get('http://cidbackend.owen198.repl.co', function(data) {
-                
-                // Convert base64 strings into image sources
-                var imgSrc1 = "data:image/jpeg;base64," + data.image1;
-                var imgSrc2 = "data:image/jpeg;base64," + data.image2;
-                
-                // Set the image sources to display the images
+            // Fetch image from API 1
+            $.get('http://cidbackend.owen198.repl.co/get_image', function(data1) {
+                var imgSrc1 = "data:image/jpeg;base64," + data1.image;
                 $('#base64Image1').attr('src', imgSrc1);
+            });
+
+            // Fetch image from API 2
+            $.get('http://cidbackend.owen198.repl.co/get_qr', function(data2) {
+                var imgSrc2 = "data:image/jpeg;base64," + data2.image;
                 $('#base64Image2').attr('src', imgSrc2);
             });
         });
