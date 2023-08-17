@@ -70,6 +70,7 @@ def gen_qr():
     buffered = io.BytesIO()
     qr_img.save(buffered, format="JPEG")  # You can change format to PNG or other file types
     qr_img_base64 = base64.b64encode(buffered.getvalue())
+    print(qr_img_base64)
 
     # return send_file('qr_code.png', mimetype='image/png')
 
