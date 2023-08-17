@@ -82,8 +82,8 @@ def gen_image():
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'width': 32,
-            'height': 32}
+            'width': 512,
+            'height': 512}
 
     response = submit_post(sd_host, data)
     image_base64 = response.json()['images'][0]
