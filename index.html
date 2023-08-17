@@ -4,31 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Image</title>
+    <title>Display Base64 Image</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
 
-    <img id="fetchedImage" src="" alt="Image fetched from API">
-
-    <img id="fetchedImage_qr" src="" alt="Image fetched from API">
+    <img id="base64Image" alt="Image from Base64">
 
     <script>
         $(document).ready(function () {
-            $.ajax({
-                url: 'https://cidbackend.owen198.repl.co/',
-                type: 'GET',
-                success: function (data) {
-                    let image_data = 'data:image/jpeg;base64,' + data.image;
-                    $('#fetchedImage').attr('src', image_data);
+            // Assuming your RESTful API endpoint is 'http://yourapi.com/get_image_base64'
+            $.get('cidbackend.owen198.repl.co', function(data) {
+                // Assuming your API returns a JSON object like { "image": "base64string..." }
+                var base64String = data.image;
 
-                    // let image_data = 'data:image/jpeg;base64,' + data.qr;
-                    // $('#fetchedImage_qr').attr('src', image_data);
-                },
-                error: function (error) {
-                    console.log("Error fetching image:", error);
-                }
+                // Convert base64 string into an image source
+                var imgSrc = "data:image/jpeg;base64," + base64String;
+                
+                // Set the image source to display the image
+                $('#base64Image').attr('src', imgSrc);
             });
         });
     </script>
