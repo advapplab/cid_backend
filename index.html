@@ -23,8 +23,8 @@
                     let image_data = 'data:image/jpeg;base64,' + data.image;
                     $('#fetchedImage').attr('src', image_data);
 
-                    let image_data = 'data:image/jpeg;base64,' + data.qr;
-                    $('#fetchedImage_qr').attr('src', image_data);
+                    // let image_data = 'data:image/jpeg;base64,' + data.qr;
+                    // $('#fetchedImage_qr').attr('src', image_data);
                 },
                 error: function (error) {
                     console.log("Error fetching image:", error);
