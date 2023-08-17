@@ -3,6 +3,7 @@ from flask import Flask, request, abort, send_file
 from PIL import Image
 
 import os
+import io
 import requests
 import qrcode
 import random
@@ -84,6 +85,13 @@ def home():
 
     response = submit_post(sd_host, data)
     image_base64 = response.json()['images'][0]
+
+    with open('gen_image.png', "wb") as image_file:
+        image_file.write(base64.b64decode(image_base64))
+
+
+
+
 
 
     return_dict = dict()
