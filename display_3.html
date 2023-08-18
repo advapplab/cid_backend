@@ -188,7 +188,34 @@
             }
         }
 
+        function getqrimage() {
+            const dataToSend = {
+                "filename": '0003.png'
+            };
+
+            fetch(url+'8829/get_qr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dataToSend),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const imgElement = document.getElementById('ai_image_id');
+                // Assuming your API returns the image as { image: 'BASE64_STRING' }
+                imgElement.src = 'data:image/png;base64,' + data.image; // Change 'image/png' if your image is in a different format
+                // ai_image_id.setAttribute('src', data);
+            })
+            .catch(error => {
+                console.error('Error fetching image:', error);
+            });
+        }
+
         window.addEventListener('load', startup, false);
+
+        url = 'http://140.119.112.78:'
+        getqrimage()
     })();
     </script>
 </body>
