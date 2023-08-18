@@ -202,17 +202,17 @@
                     body: JSON.stringify(postData)
                 });
 
-                const data = response.json();
-                console.log(data);
+                const r = response.json();
+                console.log(r);
 
                 // ai_image = data.ai_image;
                 // qr_image = data.qr_image;
 
                 imageElement = document.getElementById('qr_id');
-                imageElement.src = 'data:image/png;base64,' + data.qr;
+                imageElement.src = 'data:image/png;base64,' + r.qr;
 
                 imageElement = document.getElementById('ai_image_id');
-                imageElement.src = 'data:image/png;base64,' + data.ai;
+                imageElement.src = 'data:image/png;base64,' + r.ai;
 
 
 
