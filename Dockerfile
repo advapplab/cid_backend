@@ -10,6 +10,6 @@ RUN wget -P /root/.insightface/models/ https://github.com/deepinsight/insightfac
 RUN pip3 install cmake
 RUN pip3 install -r requirements.txt 
 # ENTRYPOINT python3 main.py
-ENTRYPOINT gunicorn --certfile=cert.pem --keyfile=key.pem -b 0.0.0.0:8000 main:app
+ENTRYPOINT gunicorn --certfile=cert.pem --keyfile=key.pem -b 0.0.0.0:8000 main:app --timeout 120
 
 EXPOSE 8000
