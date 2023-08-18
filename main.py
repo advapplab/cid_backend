@@ -86,7 +86,7 @@ def gen_qr():
 
 
 
-@app.route("/get_image", methods=['POST'])
+@app.route("/get_ai", methods=['POST'])
 def gen_image():
 
     # print(request)
