@@ -15,6 +15,7 @@ import insightface
 from insightface.app import FaceAnalysis
 from insightface.data import get_image as ins_get_image
 from io import BytesIO
+import numpy as np
 
 
 
@@ -202,10 +203,12 @@ def submit():
     # Create a PIL Image object from the decoded string
     webcam_image = Image.open(BytesIO(image_bytes))
 
+    webcam_np = np.array(webcam_image)
+
     app = FaceAnalysis(name='buffalo_l')
     app.prepare(ctx_id=0, det_size=(640, 640))
 
-    faces = app.get(webcam_image)
+    faces = app.get(webcam_np)
 
     print(faces)
 
