@@ -175,17 +175,17 @@ def gen():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
     webcam_image = json.dumps(jsonobj['webcam_image']).replace("\"", "")
 
+    webcam_image = webcam_image4.replace("image/png;base64,", "")
+
+    path = '../sd_image/photo/'
+    with open(path+filename, "wb") as image_file:
+        image_file.write(base64.b64decode(webcam_image))
+
     # print(webcam_image)
 
-
-    ai_image_base64 = gen_ai(filename)
-    qr_image_base64 = gen_qr(filename)
-    
-    # return send_file('gen_image.png', mimetype='image/png')
     res = dict()
-    res['ai'] = ai_image_base64
-    res['qr'] = qr_image_base64
     res = make_response(jsonify(res), 200)
+
 
     return res
 
