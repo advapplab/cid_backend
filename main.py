@@ -247,7 +247,6 @@ def submit():
     image.save('../output/test.png')
 
 
-plt.imshow(output)                                       
 
     res = dict()
     res = make_response(jsonify(res), 200)
