@@ -206,12 +206,12 @@ def submit():
     webcam_np = np.array(webcam_image)
     print(webcam_np)
 
-    # app = FaceAnalysis(name='buffalo_l')
-    # app.prepare(ctx_id=0, det_size=(640, 640))
+    app = FaceAnalysis(name='buffalo_l')
+    app.prepare(ctx_id=0, det_size=(640, 640))
 
-    # faces = app.get(webcam_np)
+    face_on_bg = app.get(bg_img)[0]
 
-    print(faces)
+    print(face_on_bg)
 
 
     res = dict()
