@@ -1,6 +1,7 @@
 from pymongo import MongoClient
 from flask import Flask, request, abort, send_file, jsonify, send_from_directory, make_response
 from PIL import Image
+from flask_cors import CORS
 
 import os
 import io
