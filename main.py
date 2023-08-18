@@ -222,7 +222,7 @@ def submit():
 
 
 
-    app = FaceAnalysis(name='buffalo_l')
+    app = FaceAnalysis(name='buffalo_l', root='./')
     app.prepare(ctx_id=0, det_size=(640, 640))
 
     face_on_wc = app.get(wc_image_np)[0]
