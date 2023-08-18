@@ -19,6 +19,7 @@ sd_host = 'http://140.119.112.78:8824'
 sr_host = 'http://140.119.112.78:8828'
 
 app = Flask(__name__, static_folder="/")
+CORS(app)  # This will enable CORS for all routes
 
 options_character = ["a female doll", "a male doll", "a female warrior", "a prince", 'a male doctor', "a female doctor", 'a cyberpunk samurai', 'a steampunk samurai', 'Margot Robbie', 'Anne Hathaway',
                 "a princess", "a male mermaid", "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
