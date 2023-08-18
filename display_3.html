@@ -175,7 +175,7 @@
             ai_image_id.setAttribute('src', data);
         }
 
-        async function takepicture() {
+        function takepicture() {
             var context = canvas.getContext('2d');
             if (width && height) {
                 canvas.width = width;
@@ -187,14 +187,14 @@
 
 
                 // console.log(data);
-                const postData = {
+                postData = {
                     // Example data to send with the request
                     "webcam_image": data,
                     "filename": filename
                 };
 
                 // Fetch the base64 encoded image data from the RESTful API
-                const response = await fetch(url+'8829/submit', {
+                response = fetch(url+'8829/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -203,12 +203,6 @@
                 });
 
                 // const data = response.json();
-                
-
-
-
-
-
 
 
                 imageGeneration();
