@@ -164,9 +164,22 @@ def gen_ai(filename):
             response = submit_post(sd_api_host, data)
             image_base64 = response.json()['images'][0]
 
-            if '$error' not in json.loads(response.text):
+            app = FaceAnalysis(name='buffalo_l', root='./')
+            app.prepare(ctx_id=0, det_size=(640, 640))
+            faces = app.get(base64_string_2_np(image_base64))
+
+
+            if len(faces) == 1:
+                print('# of face equal to 1, ', end =" ")
+                break
+
+            elif (len(faces) == 1) and ('$error' not in json.loads(response.text)):
                 print('no error occured in http request')
                 break
+
+            else:
+                print('face not equal to 1 or error occured')
+                time.sleep(5)
 
         except requests.ConnectionError:
             print("Received ConnectionError. Retrying...", end =" ")
