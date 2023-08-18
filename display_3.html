@@ -116,6 +116,8 @@
         var canvas = null;
         var photo = null;
         var startbutton = null;
+        url = 'http://140.119.112.78:'
+        const filename = Date.now().toString()+'.png';
 
         function startup() {
             video = document.getElementById('video');
@@ -162,7 +164,6 @@
             clearphoto();
         }
 
-
         function clearphoto() {
             var context = canvas.getContext('2d');
             context.fillStyle = "#AAA";
@@ -183,6 +184,7 @@
 
                 var data = canvas.toDataURL('image/png');
                 photo.setAttribute('src', data);
+                imageGeneration();
             } else {
                 clearphoto();
             }
@@ -213,7 +215,6 @@
             const imageElement = document.getElementById('qr_id');
             imageElement.src = 'data:image/png;base64,' + base64ImageData;
         }
-
 
         async function getaiimage() {
             // Define the data you want to send with the POST request
@@ -246,17 +247,12 @@
 
         window.addEventListener('load', startup, false);
 
-        url = 'http://140.119.112.78:'
-        const filename = Date.now().toString()+'.png';
-
-
-
-        async function runFunctionsInOrder() {
+        async function imageGeneration() {
             await getaiimage();
             getqrimage();
         }
 
-        runFunctionsInOrder();
+        // runFunctionsInOrder();
 
 
     })();
