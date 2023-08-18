@@ -194,7 +194,7 @@
                 };
 
                 // Fetch the base64 encoded image data from the RESTful API
-                response = await fetch(url+'8829/gen', {
+                const response = await fetch(url+'8829/gen', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -202,7 +202,8 @@
                     body: JSON.stringify(postData)
                 });
 
-                data = response.json();
+                const data = response.json();
+                console.log(data);
 
                 // ai_image = data.ai_image;
                 // qr_image = data.qr_image;
