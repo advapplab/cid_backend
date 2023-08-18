@@ -229,9 +229,6 @@ def submit():
     face_on_ai = app.get(ai_image_np)
     face_on_wc = app.get(wc_image_np)
 
-    print(face_on_wc)
-    print(face_on_ai)
-
     swapper = insightface.model_zoo.get_model('inswapper_128.onnx',
                                                 download=False,
                                                 download_zip=False)
