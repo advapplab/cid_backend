@@ -186,7 +186,37 @@
                 photo.setAttribute('src', data);
 
                 console.log(data);
-                imageGeneration();
+                const postData = {
+                    // Example data to send with the request
+                    "webcam_image": data,
+                    "filename": filename
+                };
+
+                // Fetch the base64 encoded image data from the RESTful API
+                response = fetch(url+'8829/gen', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(postData)
+                });
+
+                data = response.json();
+
+                // ai_image = data.ai_image;
+                // qr_image = data.qr_image;
+
+                imageElement = document.getElementById('qr_id');
+                imageElement.src = 'data:image/png;base64,' + data.qr_image;
+
+                imageElement = document.getElementById('ai_image_id');
+                imageElement.src = 'data:image/png;base64,' + data.ai_image;
+
+
+
+
+
+                // imageGeneration();
             } else {
                 clearphoto();
             }

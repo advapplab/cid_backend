@@ -126,6 +126,71 @@ def gen_image():
     return res
 
 
+def gen_ai(filename){
+    # choose a random 
+    option1 = random.choice(options_character)
+    option2 = random.choice(options_location)
+
+    # replace string
+    prompt = "in location, a person, alone, facing the camera, solo, skin detail, face detail, Taiwanese, raw photo ,8K HDR, hyper-realistic, half body shot, hyper detailed, cinematic lighting"
+    prompt = prompt.replace("a person", option1).replace("in location", option2)
+    neg_prompt = "nsfw, nude, censored, ((duplication)), more than one person, text, watermark, blurry background, naked, half naked, topless, wearing underwear, showing thighs, showing chest, deformed iris, deformed pupils, out of frame, cropped, not wearing pants,semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers:1.4), (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation, worst quality, normal quality, low quality, low res, blurry, text, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch ,duplicate, ugly, monochrome, horror, geometry, mutation, disgusting, bad anatomy, bad hands, three hands, three legs, bad arms, missing legs, missing arms, poorly drawn face, bad face, fused face, cloned face, worst face, three crus, extra crus, fused crus, worst feet, three feet, fused feet, fused thigh, three thigh, fused thigh, extra thigh, worst thigh, missing fingers, extra fingers, ugly fingers, long fingers, horn, extra eyes, huge eyes, 2girl, amputation, disconnected limbs, cartoon, cg, 3d, unreal, animate"
+
+    data = {'prompt': prompt,
+            "negative_prompt": neg_prompt,
+            "sampler_name": "DPM++ 2M Karras",
+            'width': 512,
+            'height': 512}
+
+    sd_api_host = sd_host+'/sdapi/v1/txt2img'
+
+    response = submit_post(sd_api_host, data)
+    image_base64 = response.json()['images'][0]
+
+    path = '../sd_image/'
+    with open(path+filename, "wb") as image_file:
+        image_file.write(base64.b64decode(image_base64)
+    
+    return image_base64
+}
+
+def gen_qr(filename){
+    qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&filename={}&openfolder=normal&ep='.format(sr_host, filename, filename)
+    # print(qnap_url)
+
+    qr_img = qrcode.make(qnap_url)
+    qr_img_base64 = image_to_base64(qr_img)
+
+    return image_base64
+}
+
+
+@app.route("/gen", methods=['POST'])
+def gen():
+
+    # print(request)
+    jsonobj = request.get_json(silent=True)
+    filename = json.dumps(jsonobj['filename']).replace("\"", "")
+    webcam_image = json.dumps(jsonobj['webcam_image']).replace("\"", "")
+
+    print(webcam_image)
+
+
+    ai_image_base64 = gen_ai(filename)
+    qr_image_base64 = gen_qr(filename)
+    
+    # return send_file('gen_image.png', mimetype='image/png')
+    res = dict()
+    res['ai'] = ai_image_base64
+    res['qr'] = qr_image_base64
+    res = make_response(jsonify(res), 200)
+
+    return res
+
+
+
+
+
 @app.route('/')
 def root():
     return send_from_directory(app.static_folder, 'index.html')
