@@ -167,8 +167,8 @@ def gen_qr(filename):
 
 
 
-@app.route("/gen", methods=['POST'])
-def gen():
+@app.route("/submit", methods=['POST'])
+def submit():
 
     # print(request)
     jsonobj = request.get_json(silent=True)
@@ -176,6 +176,8 @@ def gen():
     webcam_image = json.dumps(jsonobj['webcam_image']).replace("\"", "")
 
     webcam_image = webcam_image.replace("image/png;base64,", "")
+    print(webcam_image)
+    print(filename)
 
     path = '../sd_image/photo/'
     with open(path+filename, "wb") as image_file:
