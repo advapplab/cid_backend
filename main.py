@@ -241,7 +241,7 @@ def submit():
     image = Image.fromarray(output)
 
     # Save the image
-    image.save('../output/test.png')
+    image.save('../sd_image/output/test.png')
 
 
 
