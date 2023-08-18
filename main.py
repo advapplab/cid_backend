@@ -243,10 +243,12 @@ def submit():
 
     # Save the image
     image.save('../sd_image/output/'+filename)
+    output_base64 = image_to_base64(image)
 
 
 
     res = dict()
+    res['image'] = output_base64
     res = make_response(jsonify(res), 200)
 
 

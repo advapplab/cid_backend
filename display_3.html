@@ -202,7 +202,15 @@
                     body: JSON.stringify(postData)
                 });
 
-                // const data = response.json();
+                data = response.json();
+                console.log(data);
+                // Assuming the API returns a JSON object with the image data in a field called 'image'
+                const base64ImageData = data.image;
+
+                // Set the base64 data as the src of the image
+                const imageElement = document.getElementById('ai_image_id');
+                imageElement.src = 'data:image/png;base64,' + base64ImageData;
+                console.log(base64ImageData);
 
 
                 getqrimage();
