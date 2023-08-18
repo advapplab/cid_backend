@@ -182,12 +182,12 @@ def submit():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
     webcam_image_string = json.dumps(jsonobj['webcam_image']).replace("\"", "")
 
-    print(webcam_image)
+    # print(webcam_image)
 
     webcam_image_base64_string = webcam_image_string.replace("data:image/png;base64,", "")
 
     # print(webcam_image)
-    print(filename)
+    # print(filename)
 
     path = '../sd_image/photo/'
     with open(path+filename, "wb") as image_file:
