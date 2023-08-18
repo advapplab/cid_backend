@@ -144,6 +144,7 @@
             
             startbutton = document.getElementById('startbutton');
             resetbutton = document.getElementById('resetbutton');
+            resetbutton.style.display === 'none';
 
             navigator.mediaDevices.getUserMedia({
                     video: true,
@@ -175,6 +176,8 @@
 
             startbutton.addEventListener('click', function(ev) {
                 takepicture();
+                resetbutton.style.display === 'block';
+                startbutton.style.display === 'none';
                 ev.preventDefault();
             }, false);
 
