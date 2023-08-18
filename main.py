@@ -173,6 +173,31 @@ def gen_qr(filename):
 
     return qr_img_base64
 
+def base64_string_2_np (base64_string):
+    # Decode the base64 string
+    image_bytes = base64.b64decode(base64_string)
+
+    # Create a PIL Image object from the decoded string
+    webcam_image = Image.open(BytesIO(image_bytes))
+
+    webcam_np = np.array(webcam_image)
+    return webcam_np
+
+
+def gen_wc (filename, webcam_image_string):
+    wc_image_base64_string = webcam_image_string.replace("data:image/png;base64,", "")
+
+    # print(webcam_image)
+    # print(filename)
+
+    path = '../sd_image/photo/'
+    with open(path+filename, "wb") as image_file:
+        image_file.write(base64.b64decode(webcam_image_base64_string))
+
+    return wc_image_base64_string
+
+
+
 
 
 @app.route("/submit", methods=['POST'])
@@ -185,33 +210,26 @@ def submit():
 
     # print(webcam_image)
 
-    webcam_image_base64_string = webcam_image_string.replace("data:image/png;base64,", "")
+    ai_image_base64_string = gen_ai(filename)
+    wc_image_base64_string = gen_wc(filename, webcam_image_string)
 
-    # print(webcam_image)
-    # print(filename)
-
-    path = '../sd_image/photo/'
-    with open(path+filename, "wb") as image_file:
-        image_file.write(base64.b64decode(webcam_image_base64_string))
+    ai_image_np = base64_string_2_np(ai_image_base64_string)
+    wc_image_np = base64_string_2_np(wc_image_base64_string)
 
 
-    # face detection and swapping
+    
 
-    # Decode the base64 string
-    image_bytes = base64.b64decode(webcam_image_base64_string)
 
-    # Create a PIL Image object from the decoded string
-    webcam_image = Image.open(BytesIO(image_bytes))
 
-    webcam_np = np.array(webcam_image)
-    print(webcam_np)
 
     app = FaceAnalysis(name='buffalo_l')
     app.prepare(ctx_id=0, det_size=(640, 640))
 
-    face_on_webcam = app.get(webcam_np)[0]
+    face_on_wc = app.get(wc_image_np)[0]
+    face_on_ai = app.get(ai_image_np)[0]
 
-    print(face_on_webcam)
+    print(face_on_wc)
+    print(face_on_ai)
 
     swapper = insightface.model_zoo.get_model('inswapper_128.onnx',
                                                 download=False,
