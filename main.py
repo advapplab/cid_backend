@@ -127,6 +127,7 @@ def gen_image():
 
 
 def gen_ai(filename):
+    print('gen ai image')
     # choose a random 
     option1 = random.choice(options_character)
     option2 = random.choice(options_location)
@@ -155,6 +156,7 @@ def gen_ai(filename):
 
 
 def gen_qr(filename):
+    print('gen qr code')
     qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&filename={}&openfolder=normal&ep='.format(sr_host, filename, filename)
     # print(qnap_url)
 
@@ -173,7 +175,7 @@ def gen():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
     webcam_image = json.dumps(jsonobj['webcam_image']).replace("\"", "")
 
-    print(webcam_image)
+    # print(webcam_image)
 
 
     ai_image_base64 = gen_ai(filename)
