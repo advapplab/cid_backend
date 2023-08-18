@@ -240,8 +240,17 @@
 
         url = 'http://140.119.112.78:'
         const filename = Date.now().toString()+'.png';
-        getqrimage()
-        getaiimage()
+
+
+
+        async function runFunctionsInOrder() {
+            await getaiimage();
+            getqrimage();
+        }
+
+        runFunctionsInOrder();
+
+
     })();
     </script>
 </body>
