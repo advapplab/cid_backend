@@ -126,7 +126,7 @@ def gen_image():
     return res
 
 
-def gen_ai(filename){
+def gen_ai(filename):
     # choose a random 
     option1 = random.choice(options_character)
     option2 = random.choice(options_location)
@@ -152,9 +152,9 @@ def gen_ai(filename){
         image_file.write(base64.b64decode(image_base64))
     
     return image_base64
-}
 
-def gen_qr(filename){
+
+def gen_qr(filename):
     qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&filename={}&openfolder=normal&ep='.format(sr_host, filename, filename)
     # print(qnap_url)
 
@@ -162,7 +162,7 @@ def gen_qr(filename){
     qr_img_base64 = image_to_base64(qr_img)
 
     return image_base64
-}
+
 
 
 @app.route("/gen", methods=['POST'])
