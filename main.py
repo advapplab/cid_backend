@@ -239,7 +239,15 @@ def submit():
 
 
 
-    # swapper.get(bg_img, face_on_bg, face_from_webcam, paste_back=True)                                            
+    output = swapper.get(ai_image_np, face_on_ai, face_on_wc, paste_back=True)     
+    # Convert ndarray to an Image object
+    image = Image.fromarray(output)
+
+    # Save the image
+    image.save('../output/test.png')
+
+
+plt.imshow(output)                                       
 
     res = dict()
     res = make_response(jsonify(res), 200)
