@@ -65,6 +65,20 @@
         cursor: pointer;
     }
 
+    #resetbutton {
+        display: block;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        bottom: 36px;
+        padding: 5px;
+        background-color: #6a67ce;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        color: rgba(255, 255, 255, 1.0);
+        cursor: pointer;
+    }
+
     .contentarea {
         font-size: 16px;
         font-family: Arial;
@@ -83,6 +97,7 @@
             <video id="video">Video stream not available.</video>
         </div>
         <div><button id="startbutton">Take photo</button></div>
+        <div><button id="resetbutton">Reset</button></div>
 
         <canvas id="canvas"></canvas>
 
@@ -116,6 +131,7 @@
         var canvas = null;
         var photo = null;
         var startbutton = null;
+        var resetbutton = null;
         url = 'https://140.119.112.78:'
         const filename = Date.now().toString()+'.png';
 
@@ -127,6 +143,7 @@
             ai_image_id = document.getElementById('ai_image_id');
             
             startbutton = document.getElementById('startbutton');
+            resetbutton = document.getElementById('resetbutton');
 
             navigator.mediaDevices.getUserMedia({
                     video: true,
@@ -158,6 +175,11 @@
 
             startbutton.addEventListener('click', function(ev) {
                 takepicture();
+                ev.preventDefault();
+            }, false);
+
+            resetbutton.addEventListener('click', function(ev) {
+                location.reload();
                 ev.preventDefault();
             }, false);
 
