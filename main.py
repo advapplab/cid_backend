@@ -31,29 +31,32 @@ app = Flask(__name__, static_folder="/")
 CORS(app)  # This will enable CORS for all routes
 
 options_character = ["a female doll", "a male doll", "a female warrior", "a prince", 'a male doctor', "a female doctor", 'a cyberpunk samurai', 'a steampunk samurai', 'Margot Robbie', 'Anne Hathaway',
-                "a princess", "a male mermaid", "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
-                "a robot  with a human face", "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
-                "a male steampunk inventor", "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar',
-                "a male space farmer", "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn',
-                    "a cyborg bride", "a cyborg groom", "a barbie doll", "a Ken doll", 'A tree spirit with a human face', 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman'
-                "an ice mage", 'an artist','A monk', 'a human dragon rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp',
-                'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie',
-                'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger',
-                'a working class labor', 'Anya Taylor Joy']
+                    'a princess", "a male mermaid', "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
+                    'a robot  with a human face"', "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
+                    'a male steampunk inventor', "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar',
+                    'a male space farmer', "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn',
+                    'a cyborg bride', "a cyborg groom", "a barbie doll", "a Ken doll", 'A tree spirit with a human face', 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman'
+                    'an ice mage', 'an artist','A monk', 'a human dragon rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp',
+                    'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie',
+                    'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger',
+                    'a working class labor', 'Anya Taylor Joy', 'Andrew Scott', 'Andy Lau', 'a beautiful girl', 'a beautiful boy', 'a beautiful woman', 'a beautiful man', 'a cute boy', 'a cute girl', 'a Korean star',
+                    'a Kpop singer', 'a jpop singer', 'a cosplayer', 'an anime girl', 'a Japanese girl', 'a Korean man', 'a Korean girl', 'a stylish man', 'Freddie Mercury', 'Elton John', 'Mulan','Rapunzel',
+                    'Ron Weasley', 'Draco Malfoy','Dracula', 'Elon Musk','Mark Zuckerberg','Donald Trump','Hilary Clinton', 'Joe Biden', 'Alexander Hamilton', 'William Shakespeare', 'Prince Hamlet', 'kim Jong Un', 'a dwarf']
 
-options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world',
-                    'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in a garden surrounded by alien plants', 
-                    'in a space farm','in a snowy world', 'in fire world', 'in a ruin', 'in forest fire', "in front of a cyberpunk portal", 'on a music planet', 'in black hole', 'in a circus', 'in Liberty square',
-                    'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101',
-                    'a smoky dragon island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in a violent congress'
-                    'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate',
-                    'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a grand library filled with endless shelves of magical tomes',
-                    'in a mystical mirror chamber',  'A bridge perched at the edge of the world', 'in a plateau covered in colorful crystalline formation', 'in a traveling carnival', ' in a magical cathedral',
-                    'in a desert oasis', 'an alien glade', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in a protest', 'in an democratic world',
-                    'in the middle of a riot', 'in a peace sit-in protest', 'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world',
-                    'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in front of Krusty Krab', 'in Japanese classroom',
+options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world', 'in food court', 'in a Mafia gun fight',
+                    'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in a garden surrounded by alien plants', 'in Taroko canyon',
+                    'in a space farm','in a snowy world', 'in fire world', 'in a ruin', 'in forest fire', "in front of a cyberpunk portal", 'on a music planet', 'in black hole', 'in a circus', 'in Liberty square', 'in huanted house',
+                    'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101', 'in BLM protest', 
+                    'a smoky dragon island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in a violent congress', 'in Hog Kong protest',
+                    'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate', 'in Tiananmen Protest', 
+                    'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a grand library filled with endless shelves of magical tomes', 'in a laundry store',
+                    'in a mystical mirror chamber',  'A bridge perched at the edge of the world', 'in a plateau covered in colorful crystalline formation', 'in a traveling carnival', ' in a magical cathedral', 'in Mcdonald', 'in a strike',
+                    'in a desert oasis', 'an alien glade', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in a protest', 'in an democratic world', 'in Pride parade',
+                    'in the middle of a riot', 'in a peace sit-in protest', 'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world', 'in a nightmarket',
+                    'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in front of Krusty Krab', 'in Japanese classroom', 'on a beach full of trash',
                     'in Asgard', 'in Orbit City', 'in Emerald City', 'in Hogsmeade Village', 'in Rivendell', 'in Shangri-La', 'in Tomorrowland', 'in Cloud City', 'in Gotham city', 'in Willy Wonka’s Factory', 'in front of The Gatsby Mansion',
-                    'in the South park', 'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world'
+                    'in the South park', 'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
+                    'in NYSE', 'in a lab', 'in front of Doofenshimirtz Evil Co.', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert'
                 ]
 
 def submit_post(url: str, data: dict):
@@ -67,9 +70,6 @@ def image_to_base64(img: Image.Image, format: str = "PNG") -> str:
     img.save(buffered, format=format)
     img_str = base64.b64encode(buffered.getvalue()).decode()
     return img_str
-
-
-
 
 @app.route("/get_qr", methods=['POST'])
 def gen_qr():
@@ -92,8 +92,6 @@ def gen_qr():
     res = make_response(jsonify(res), 200)
 
     return res
-
-
 
 @app.route("/get_ai", methods=['POST'])
 def gen_image():
@@ -134,35 +132,53 @@ def gen_image():
 
     return res
 
-
 def gen_ai(filename):
+
+
     print('gen ai image')
     # choose a random 
     option1 = random.choice(options_character)
     option2 = random.choice(options_location)
 
     # replace string
-    prompt = "in location, a person, alone, facing the camera, solo, skin detail, face detail, Taiwanese, raw photo ,8K HDR, hyper-realistic, half body shot, hyper detailed, cinematic lighting"
+    prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality"
     prompt = prompt.replace("a person", option1).replace("in location", option2)
-    neg_prompt = "nsfw, nude, censored, ((duplication)), more than one person, text, watermark, blurry background, naked, half naked, topless, wearing underwear, showing thighs, showing chest, deformed iris, deformed pupils, out of frame, cropped, not wearing pants,semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers:1.4), (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation, worst quality, normal quality, low quality, low res, blurry, text, watermark, logo, banner, extra digits, cropped, jpeg artifacts, signature, username, error, sketch ,duplicate, ugly, monochrome, horror, geometry, mutation, disgusting, bad anatomy, bad hands, three hands, three legs, bad arms, missing legs, missing arms, poorly drawn face, bad face, fused face, cloned face, worst face, three crus, extra crus, fused crus, worst feet, three feet, fused feet, fused thigh, three thigh, fused thigh, extra thigh, worst thigh, missing fingers, extra fingers, ugly fingers, long fingers, horn, extra eyes, huge eyes, 2girl, amputation, disconnected limbs, cartoon, cg, 3d, unreal, animate"
+    neg_prompt = "nude, (nsfw, deformed, distorted, disfigured:1.3), poorly drawn face, bad anatomy, wrong anatomy, extra limb, missing limb, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo, watermark, text, anime, illustration, sketch, 3d, vector art, cartoon, painting, large breasts, blurry, depth of field, "
 
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'width': 512,
+            'steps':150,
+            'cfg_scale':8,
+            'seed': -1,
+            'restore_faces': True,
+            'width': 768,
             'height': 512}
 
     sd_api_host = sd_host+'/sdapi/v1/txt2img'
 
-    response = submit_post(sd_api_host, data)
-    image_base64 = response.json()['images'][0]
+    while True:
+
+        try: 
+
+            response = submit_post(sd_api_host, data)
+            image_base64 = response.json()['images'][0]
+
+            if '$error' not in json.loads(response.text):
+                print('no error occured in http request')
+                break
+
+        except requests.ConnectionError:
+            print("Received ConnectionError. Retrying...", end =" ")
+            time.sleep(5)
+            continue
+
 
     path = '../sd_image/'
     with open(path+filename, "wb") as image_file:
         image_file.write(base64.b64decode(image_base64))
     
     return image_base64
-
 
 def gen_qr(filename):
     print('gen qr code')
@@ -185,7 +201,6 @@ def base64_string_2_np (base64_string):
     webcam_np = webcam_np[:, :, :3]
     return webcam_np
 
-
 def gen_wc (filename, webcam_image_string):
     wc_image_base64_string = webcam_image_string.replace("data:image/png;base64,", "")
 
@@ -197,10 +212,6 @@ def gen_wc (filename, webcam_image_string):
         image_file.write(base64.b64decode(wc_image_base64_string))
 
     return wc_image_base64_string
-
-
-
-
 
 @app.route("/submit", methods=['POST'])
 def submit():
