@@ -181,6 +181,7 @@ def base64_string_2_np (base64_string):
     webcam_image = Image.open(BytesIO(image_bytes))
 
     webcam_np = np.array(webcam_image)
+    webcam_np = webcam_np[:, :, :3]
     return webcam_np
 
 
