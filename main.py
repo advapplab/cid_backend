@@ -209,10 +209,18 @@ def submit():
     app = FaceAnalysis(name='buffalo_l')
     app.prepare(ctx_id=0, det_size=(640, 640))
 
-    face_on_bg = app.get(bg_img)[0]
+    face_on_webcam = app.get(webcam_np)[0]
 
-    print(face_on_bg)
+    print(face_on_webcam)
 
+    swapper = insightface.model_zoo.get_model('inswapper_128.onnx',
+                                                download=False,
+                                                download_zip=False)
+
+
+
+
+    # swapper.get(bg_img, face_on_bg, face_from_webcam, paste_back=True)                                            
 
     res = dict()
     res = make_response(jsonify(res), 200)
