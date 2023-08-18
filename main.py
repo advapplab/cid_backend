@@ -149,7 +149,7 @@ def gen_ai(filename){
 
     path = '../sd_image/'
     with open(path+filename, "wb") as image_file:
-        image_file.write(base64.b64decode(image_base64)
+        image_file.write(base64.b64decode(image_base64))
     
     return image_base64
 }
