@@ -224,67 +224,67 @@
             }
         }
 
-        async function getqrimage() {
-            // Define the data you want to send with the POST request
-            const postData = {
-                // Example data to send with the request
-                "filename": filename
-            };
+        // async function getqrimage() {
+        //     // Define the data you want to send with the POST request
+        //     const postData = {
+        //         // Example data to send with the request
+        //         "filename": filename
+        //     };
 
-            // Fetch the base64 encoded image data from the RESTful API
-            const response = await fetch(url+'8829/get_qr', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            });
+        //     // Fetch the base64 encoded image data from the RESTful API
+        //     const response = await fetch(url+'8829/get_qr', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(postData)
+        //     });
 
-            const data = await response.json();
+        //     const data = await response.json();
 
-            // Assuming the API returns a JSON object with the image data in a field called 'image'
-            const base64ImageData = data.image;
+        //     // Assuming the API returns a JSON object with the image data in a field called 'image'
+        //     const base64ImageData = data.image;
 
-            // Set the base64 data as the src of the image
-            const imageElement = document.getElementById('qr_id');
-            imageElement.src = 'data:image/png;base64,' + base64ImageData;
-        }
+        //     // Set the base64 data as the src of the image
+        //     const imageElement = document.getElementById('qr_id');
+        //     imageElement.src = 'data:image/png;base64,' + base64ImageData;
+        // }
 
-        async function getaiimage() {
-            // Define the data you want to send with the POST request
-            const postData = {
-                // Example data to send with the request
-                "filename": filename
-            };
+        // async function getaiimage() {
+        //     // Define the data you want to send with the POST request
+        //     const postData = {
+        //         // Example data to send with the request
+        //         "filename": filename
+        //     };
 
-            // Fetch the base64 encoded image data from the RESTful API
-            const response = await fetch(url+'8829/get_image', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            });
+        //     // Fetch the base64 encoded image data from the RESTful API
+        //     const response = await fetch(url+'8829/get_image', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(postData)
+        //     });
 
-            const data = await response.json();
-            console.log(data);
+        //     const data = await response.json();
+        //     console.log(data);
 
-            // Assuming the API returns a JSON object with the image data in a field called 'image'
-            const base64ImageData = data.image;
+        //     // Assuming the API returns a JSON object with the image data in a field called 'image'
+        //     const base64ImageData = data.image;
 
-            // Set the base64 data as the src of the image
-            const imageElement = document.getElementById('ai_image_id');
-            imageElement.src = 'data:image/png;base64,' + base64ImageData;
-            console.log(base64ImageData);
-        }
+        //     // Set the base64 data as the src of the image
+        //     const imageElement = document.getElementById('ai_image_id');
+        //     imageElement.src = 'data:image/png;base64,' + base64ImageData;
+        //     console.log(base64ImageData);
+        // }
 
 
-        window.addEventListener('load', startup, false);
+        // window.addEventListener('load', startup, false);
 
-        async function imageGeneration() {
-            await getaiimage();
-            getqrimage();
-        }
+        // async function imageGeneration() {
+        //     await getaiimage();
+        //     getqrimage();
+        // }
 
         // runFunctionsInOrder();
 
