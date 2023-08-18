@@ -5,7 +5,7 @@ ADD . /webapps
 
 RUN mkdir -p /sd_image/
 RUN mkdir -p /root/.insightface/models/
-RUN wget https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip /root/.insightface/models/
+RUN wget -P /root/.insightface/models/ https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip 
 
 RUN pip3 install cmake
 RUN pip3 install -r requirements.txt 
