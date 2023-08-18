@@ -21,6 +21,12 @@
         height: 240px;
     }
 
+    #ai_image_id {
+        border: 1px solid black;
+        width: 320px;
+        height: 240px;
+    }
+
     #canvas {
         display: none;
     }
@@ -36,6 +42,11 @@
     }
 
     .qr_class {
+        width: 340px;
+        display: inline-block;
+    }
+
+    .ai_image_class {
         width: 340px;
         display: inline-block;
     }
@@ -60,7 +71,7 @@
         text-align: center;
     }
     </style>
-    <title>My Favorite Sport</title>
+    <title>My Future</title>
 </head>
 
 <body>
@@ -72,14 +83,24 @@
             <video id="video">Video stream not available.</video>
         </div>
         <div><button id="startbutton">Take photo</button></div>
+
         <canvas id="canvas"></canvas>
+
         <div class="output">
             <img id="photo" alt="The screen capture will appear in this box.">
         </div>
+
         <canvas id="canvas"></canvas>
+
         <div class="qr_class">
             <img id="qr_id" alt="The qrcode will appear in this box.">
         </div>
+
+        <div class="ai_image_class">
+            <img id="ai_image_id" alt="The ai aimge will appear in this box.">
+        </div>
+
+
     </div>
 
     <script>
