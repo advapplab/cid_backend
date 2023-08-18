@@ -175,7 +175,7 @@ def submit():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
     webcam_image = json.dumps(jsonobj['webcam_image']).replace("\"", "")
 
-    webcam_image = webcam_image.replace("image/png;base64,", "")
+    webcam_image = webcam_image.replace("data:image/png;base64,", "")
     print(webcam_image)
     print(filename)
 
