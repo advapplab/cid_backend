@@ -90,7 +90,7 @@
             <img id="photo" alt="The screen capture will appear in this box.">
         </div>
 
-        <canvas id="canvas"></canvas>
+        
 
         <div class="qr_class">
             <img id="qr_id" alt="The qrcode will appear in this box.">
@@ -121,6 +121,8 @@
             video = document.getElementById('video');
             canvas = document.getElementById('canvas');
             photo = document.getElementById('photo');
+            qr_id = document.getElementById('qr_id');
+            ai_image_id = document.getElementById('ai_image_id');
             
             startbutton = document.getElementById('startbutton');
 
@@ -168,6 +170,8 @@
 
             var data = canvas.toDataURL('image/png');
             photo.setAttribute('src', data);
+            qr_id.setAttribute('src', data);
+            ai_image_id.setAttribute('src', data);
         }
 
         function takepicture() {
