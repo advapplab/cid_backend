@@ -175,7 +175,7 @@ def gen():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
     webcam_image = json.dumps(jsonobj['webcam_image']).replace("\"", "")
 
-    webcam_image = webcam_image4.replace("image/png;base64,", "")
+    webcam_image = webcam_image.replace("image/png;base64,", "")
 
     path = '../sd_image/photo/'
     with open(path+filename, "wb") as image_file:
