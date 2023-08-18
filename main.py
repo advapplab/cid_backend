@@ -161,7 +161,7 @@ def gen_qr(filename):
     qr_img = qrcode.make(qnap_url)
     qr_img_base64 = image_to_base64(qr_img)
 
-    return image_base64
+    return qr_img_base64
 
 
 
