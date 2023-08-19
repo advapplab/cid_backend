@@ -88,7 +88,7 @@
     }
 
     .background {
-        background-image: url('https://wallpaperaccess.com/full/1378083.jpg'); 
+        background-image: url('background.jpeg'); 
         height: 100%; 
         background-position: center;
         background-repeat: no-repeat;
@@ -163,6 +163,7 @@
         var startbutton = null;
         var resetbutton = null;
         url = 'https://140.119.112.78:'
+        
         const filename = Date.now().toString()+'.png';
 
         function startup() {
@@ -212,8 +213,8 @@
             }, false);
 
             resetbutton.addEventListener('click', function(ev) {
-                // location.reload();
-                clearphoto()
+                location.reload();
+                // clearphoto()
                 // resetbutton.style.display = 'block';
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
@@ -395,7 +396,6 @@
             imageElement.src = 'data:image/png;base64,' + base64ImageData;
             console.log(base64ImageData);
         }
-
 
         window.addEventListener('load', startup, false);
 
