@@ -84,11 +84,40 @@
         font-family: Arial;
         text-align: center;
     }
+
+    .background {
+        background-image: url('background.jpeg'); 
+        height: 100%; 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* iPad in portrait mode */
+    @media only screen 
+        and (min-device-width: 768px) 
+        and (max-device-width: 1024px) 
+        and (orientation: portrait) {
+            .background {
+                background-image: url('background.jpeg');
+            }
+        }
+
+    /* iPad in landscape mode */
+    @media only screen 
+        and (min-device-width: 768px) 
+        and (max-device-width: 1024px) 
+        and (orientation: landscape) {
+            .background {
+                background-image: url('background.jpeg');
+            }
+        }
     </style>
     <title>My Future</title>
 </head>
 
 <body>
+    <div class="background"></div>
     <div class="contentarea">
         <h1>
             under development
