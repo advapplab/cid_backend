@@ -130,11 +130,12 @@
         <div><button id="startbutton">Take photo</button></div>
         <div><button id="resetbutton">Reset</button></div>
 
+
+        <canvas id="canvas"></canvas>
+
         <div class="output">
             <img id="photo" alt="The screen capture will appear in this box.">
         </div>
-
-        <canvas id="canvas"></canvas>
 
         <div class="qr_class">
             <img id="qr_id" alt="The qrcode will appear in this box.">
@@ -211,7 +212,8 @@
             }, false);
 
             resetbutton.addEventListener('click', function(ev) {
-                location.reload();
+                // location.reload();
+                clearphoto()
                 ev.preventDefault();
             }, false);
 
@@ -362,32 +364,6 @@
                 });
 
         }
-
-        // async function getqrimage() {
-        //     // Define the data you want to send with the POST request
-        //     const postData = {
-        //         // Example data to send with the request
-        //         "filename": filename
-        //     };
-
-        //     // Fetch the base64 encoded image data from the RESTful API
-        //     const response = await fetch(url+'8829/get_qr', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(postData)
-        //     });
-
-        //     const data = await response.json();
-
-        //     // Assuming the API returns a JSON object with the image data in a field called 'image'
-        //     const base64ImageData = data.image;
-
-        //     // Set the base64 data as the src of the image
-        //     const imageElement = document.getElementById('qr_id');
-        //     imageElement.src = 'data:image/png;base64,' + base64ImageData;
-        // }
 
         async function getaiimage() {
             // Define the data you want to send with the POST request
