@@ -31,17 +31,24 @@ app = Flask(__name__, static_folder="/")
 CORS(app)  # This will enable CORS for all routes
 
 options_character = ["a female doll", "a male doll", "a female warrior", "a prince", 'a male doctor', "a female doctor", 'a cyberpunk samurai', 'a steampunk samurai', 'Margot Robbie', 'Anne Hathaway',
-                    'a princess", "a male mermaid', "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
-                    'a robot  with a human face"', "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
-                    'a male steampunk inventor', "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar',
-                    'a male space farmer', "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn',
-                    'a cyborg bride', "a cyborg groom", "a barbie doll", "a Ken doll", 'A tree spirit with a human face', 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman'
-                    'an ice mage', 'an artist','A monk', 'a human dragon rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp',
-                    'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie',
-                    'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger',
-                    'a working class labor', 'Anya Taylor Joy', 'Andrew Scott', 'Andy Lau', 'a beautiful girl', 'a beautiful boy', 'a beautiful woman', 'a beautiful man', 'a cute boy', 'a cute girl', 'a Korean star',
-                    'a Kpop singer', 'a jpop singer', 'a cosplayer', 'an anime girl', 'a Japanese girl', 'a Korean man', 'a Korean girl', 'a stylish man', 'Freddie Mercury', 'Elton John', 'Mulan','Rapunzel',
-                    'Ron Weasley', 'Draco Malfoy','Dracula', 'Elon Musk','Mark Zuckerberg','Donald Trump','Hilary Clinton', 'Joe Biden', 'Alexander Hamilton', 'William Shakespeare', 'Prince Hamlet', 'kim Jong Un', 'a dwarf']
+                'a princess", "a male mermaid', "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
+                'a robot  with a human face"', "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
+                'a male steampunk inventor', "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar',
+                'a male space farmer', "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn',
+                'a cyborg bride', "a cyborg groom", "a barbie doll", "a Ken doll", 'A tree spirit with a human face', 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman'
+                'an ice mage', 'an artist','A monk', 'a human dragon rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp',
+                'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie',
+                'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger',
+                'a working class labor', 'Anya Taylor Joy', 'Andrew Scott', 'Andy Lau', 'a beautiful girl', 'a beautiful boy', 'a beautiful woman', 'a beautiful man', 'a cute boy', 'a cute girl', 'a Korean star',
+                'a Kpop singer', 'a jpop singer', 'a cosplayer', 'an anime girl', 'a Japanese girl', 'a Korean man', 'a Korean girl', 'a stylish man', 'Freddie Mercury', 'Elton John', 'Mulan','Rapunzel',
+                'Ron Weasley', 'Draco Malfoy','Dracula', 'Elon Musk','Mark Zuckerberg','Donald Trump','Hilary Clinton', 'Joe Biden', 'Alexander Hamilton', 'William Shakespeare', 'Prince Hamlet', 'kim Jong Un',
+                'a dwarf', 'Wednesday Addams', 'a demon', 'Sherlock Holmes', 'James Moriarty', 'John Watson', 'Robert Oppenheimer', 'albert einstein', 'Confucius', 'James Bond','Sheldon Cooper', 'Elizabeth Bennet', 
+                'Fitzwilliam Darcy', 'Jay Gatsby', 'Edmond Dantès', 'Scarlett OHara', 'Frank Sinatra', 'Severus Snape', 'the Hatter', 'Red Queen', 'Michael Scott', 'Dwight Schrute', 'Bruce Wayne', "Luke Skywalker",
+                "Frodo Baggins", "Hermione Granger", "Darth Vader", "Katniss Everdeen", "Tony Stark (Iron Man)", "Princess Leia", "Winnie the Pooh", "Indiana Jones","Jack Sparrow", "Mickey Mouse", "Wonder Woman", 
+                "Batman", "Superman", "Gandalf", "Spider-Man", "Black Widow", "Elsa", "Captain Jack Harkness", "Dobby the House Elf", "Mulan", "Hannibal Lecter", "Shrek", "Edward Scissorhands","Katniss Everdeen", 
+                "Marty McFly", "John Wick", "Voldemort", "Forrest Gump", "James T. Kirk","Walter White", "Aragorn", "Gollum", "Dumbledore", 'Pete Mitchell', 'Ursula', "Maleficent", 'the Joker', "The Wicked Witch of the West",
+                'Ip Man'
+                    ]
 
 options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world', 'in food court', 'in a Mafia gun fight',
                     'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in a garden surrounded by alien plants', 'in Taroko canyon',
@@ -56,8 +63,10 @@ options_location = ['in the forest', 'in front of a neon building', 'in the stea
                     'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in front of Krusty Krab', 'in Japanese classroom', 'on a beach full of trash',
                     'in Asgard', 'in Orbit City', 'in Emerald City', 'in Hogsmeade Village', 'in Rivendell', 'in Shangri-La', 'in Tomorrowland', 'in Cloud City', 'in Gotham city', 'in Willy Wonka’s Factory', 'in front of The Gatsby Mansion',
                     'in the South park', 'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
-                    'in NYSE', 'in a lab', 'in front of Doofenshimirtz Evil Co.', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert'
-                ]
+                    'in NYSE', 'in a lab', 'in front of Doofenshimirtz Evil Co.', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert', 'in Times Sqaure', 'in Central Park', 'on The Millennium Falcon', "in Hawl's moving castle",
+                    'at Niagara Falls', 'at Machu Picchu', 'at Venice Canals', 'at Pyramids of Giza', 'at The Burj Khalifa', 'at Taj Mahal', 'at Sydney Opera House', 'in front of Mount Fuji', "at St. Basil's Cathedral", 'at Neuschwanstein Castle',
+                    'at Matterhorn', 'in a jungle village', 'in 1820 France ', 'at an Oceanic Abyss', 'in ancient Rome', 'in 1970s New York', 'in 1920s Chicago', 'in 1960s San Francisco', 'in a jazz club'
+                    ]
 
 def submit_post(url: str, data: dict):
     """
@@ -148,8 +157,17 @@ def gen_ai(filename):
     data = {'prompt': prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'steps':150,
+            'steps':60,
             'cfg_scale':8,
+            'enable_hr':True,
+            'denoising_strength': 0.7,
+            'firstphase_width': 768,
+            'firstphase_height': 512, 
+            'hr_resize_x':1152,
+            'hr_resize_y': 768,
+            "hr_scale": 2,
+            "hr_second_pass_steps": 30,
+            'hr_upscaler':'SwinIR 4x',
             'seed': -1,
             'restore_faces': True,
             'width': 768,
