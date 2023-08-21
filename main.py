@@ -178,6 +178,8 @@ def gen_ai(filename):
     while True:
 
         try: 
+            print(sd_api_host)
+            print(data)
 
             response = submit_post(sd_api_host, data)
 
