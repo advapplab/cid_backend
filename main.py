@@ -154,24 +154,24 @@ def gen_ai(filename):
     prompt = prompt.replace("a person", option1).replace("in location", option2)
     neg_prompt = "nude, (nsfw, deformed, distorted, disfigured:1.3), poorly drawn face, bad anatomy, wrong anatomy, extra limb, missing limb, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo, watermark, text, anime, illustration, sketch, 3d, vector art, cartoon, painting, large breasts, blurry, depth of field, "
 
-    data = {'prompt': prompt,
+    data = {"prompt": prompt,
             "negative_prompt": neg_prompt,
             "sampler_name": "DPM++ 2M Karras",
-            'steps':60,
-            'cfg_scale':8,
-            'enable_hr':True,
-            'denoising_strength': 0.7,
-            'firstphase_width': 768,
-            'firstphase_height': 512, 
-            'hr_resize_x':1152,
-            'hr_resize_y': 768,
+            "steps":60,
+            "cfg_scale":8,
+            "enable_hr":True,
+            "denoising_strength": 0.7,
+            "firstphase_width": 768,
+            "firstphase_height": 512, 
+            "hr_resize_x":1152,
+            "hr_resize_y": 768,
             "hr_scale": 2,
             "hr_second_pass_steps": 30,
-            'hr_upscaler':'SwinIR 4x',
-            'seed': -1,
-            'restore_faces': True,
-            'width': 768,
-            'height': 512}
+            "hr_upscaler":"SwinIR 4x",
+            "seed": -1,
+            "restore_faces": True,
+            "width": 768,
+            "height": 512}
 
     sd_api_host = sd_host+'/sdapi/v1/txt2img'
 
