@@ -180,6 +180,8 @@ def gen_ai(filename):
         try: 
 
             response = submit_post(sd_api_host, data)
+
+            print(response)
             image_base64 = response.json()['images'][0]
 
             app = FaceAnalysis(name='buffalo_l', root='./')
