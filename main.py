@@ -3,6 +3,7 @@ from flask import Flask, request, abort, send_file, jsonify, send_from_directory
 from PIL import Image
 from flask_cors import CORS
 
+
 import os
 import io
 import requests
@@ -10,6 +11,7 @@ import qrcode
 import random
 import json
 import base64
+import time
 
 import insightface
 from insightface.app import FaceAnalysis
