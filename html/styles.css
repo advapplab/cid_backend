@@ -120,12 +120,11 @@ body {
 
 /*videooooooooooooooooooooooooooooooooooooooooooooo*/
 
-.container_top {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  top: 10px;
-  position: relative;
+.containe_top {
+  display: flex;
+  justify-content: center; /* centers items horizontally */
+  align-items: center; /* centers items vertically */
+  height: 0vh; /* takes full viewport height, you can adjust as needed */
 }
 
 #webcam {
