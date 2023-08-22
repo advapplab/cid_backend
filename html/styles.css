@@ -122,6 +122,7 @@ body {
 #webcam {
   width: 768px; /* 設置寬度 這邊要問歐文 相機的尺寸是多少 才不會壓縮 */  
   height: 512px; /* 設置高度 */
+  transform: scale(0.5);
   background-color: #000000; /* 設置背景顏色 */
   display: flex;
   justify-content: center;
