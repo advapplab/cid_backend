@@ -1,5 +1,8 @@
 
 
-document.getElementById('resetButton').addEventListener('click', function() {
-    location.reload();
-});
+
+(function() {
+    document.getElementById('reset').addEventListener('click', function() {
+        location.reload();
+    });
+}
