@@ -154,8 +154,8 @@
     position: absolute;
     top: 10px; /* 距離上方 10px */
     right: 50px; /* 距離右方 10px */
-    width: 30px; /* 按鈕寬度 */
-    height: 30px; /* 按鈕高度 */
+    width: 100px; /* 按鈕寬度 */
+    height: 100px; /* 按鈕高度 */
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
