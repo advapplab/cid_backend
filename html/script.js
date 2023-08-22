@@ -3,7 +3,10 @@
 
 
 
+console.log("begin");
 
+var currentURL = window.location.href;
+console.log(currentURL);
 
 resetbutton = document.getElementById('resetbutton');
 
