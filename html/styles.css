@@ -120,7 +120,7 @@ body {
 
 /*videooooooooooooooooooooooooooooooooooooooooooooo*/
 
-.containe_top {
+.container_top {
   display: flex;
   justify-content: center; /* centers items horizontally */
   height: 0vh; /* takes full viewport height, you can adjust as needed */
