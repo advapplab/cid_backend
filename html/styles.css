@@ -15,8 +15,8 @@ body {
   align-items: center;
 }
 
-
-/* .container {
+/* 
+.container {
   width: 426.6px;
   height: 284.5px;
   perspective: 800px;
@@ -147,6 +147,7 @@ body {
   transform: translateX(-50%); 
   width: 70px; /* 按鈕寬度 */
   height: 30px; /* 按鈕高度 */
+  bottom: 36px;
   background-image: url('../icon/subject.png'); 
   background-size: contain; 
   background-repeat: no-repeat; 
