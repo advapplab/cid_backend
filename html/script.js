@@ -8,7 +8,8 @@ console.log("begin");
 var currentURL = window.location.href;
 console.log(currentURL);
 
-
+var global_width = 768
+var global_height = 512
 
 
 document.getElementById('reset').addEventListener('click', function() {
@@ -25,8 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Adjust these constraints to get the desired resolution
     const constraints = {
         video: {
-            width: 1280,
-            height: 720,
+            width: global_width,
+            height: global_height,
             facingMode: 'user'
         }
     };
