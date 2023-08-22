@@ -19,7 +19,7 @@ document.getElementById('reset').addEventListener('click', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('webcam');
     const canvas = document.getElementById('canvas');
-    const captureButton = document.getElementById('capture');
+    const captureButton = document.getElementById('capture-button');
     const ctx = canvas.getContext('2d');
 
     // Adjust these constraints to get the desired resolution
