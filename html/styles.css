@@ -130,7 +130,7 @@ body {
   /* margin-top: 10px; */
   /* border-radius: 10px; */
   position: absolute;
-  transition:all 0.2 ease;
+  transition:all 0.5 ease;
 }
 
 #capture-button{
