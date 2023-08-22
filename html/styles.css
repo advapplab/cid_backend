@@ -142,17 +142,17 @@ body {
 }
 
 #capture-button{
-  position: absolute; /* 設置按鈕為絕對定位 */
-  bottom: 20px; /* 距離底部 20px */
-  left: 50%; /* 水平居中 */
-  transform: translateX(-50%); /* 水平居中調整 */
+  /* position: absolute;  */
+  /* bottom: 20px;  */
+  /* left: 50%;  */
+  transform: translateX(-50%); 
   width: 70px; /* 按鈕寬度 */
   height: 30px; /* 按鈕高度 */
-  background-image: url('../icon/subject.png'); /* 設置按鈕圖片 */
-  background-size: contain; /* 背景圖片充滿整個按鈕 */
-  background-repeat: no-repeat; /* 防止重複顯示 */
+  background-image: url('../icon/subject.png'); 
+  background-size: contain; 
+  background-repeat: no-repeat; 
   background-position: center;
-  cursor: pointer; /* 設置滑鼠游標為手指 */
+  cursor: pointer; 
 }
 
 #capture-button:active{
