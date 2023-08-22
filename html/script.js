@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // const ctx = canvas.getContext('2d');
 
     // Adjust these constraints to get the desired resolution
-    // const constraints = {
-    //     video: {
-    //         width: 1280,
-    //         height: 720,
-    //         facingMode: 'user'
-    //     }
-    // };
+    const constraints = {
+        video: {
+            width: 1280,
+            height: 720,
+            facingMode: 'user'
+        }
+    };
 
     navigator.mediaDevices.getUserMedia(constraints)
         .then(function(stream) {
