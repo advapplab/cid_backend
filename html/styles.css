@@ -126,7 +126,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -700px;
+  /* margin-top: -700px; */
   border-radius: 10px;
   position: absolute;
   transition:all 0.2 ease;
