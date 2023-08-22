@@ -119,7 +119,7 @@ body {
 }
 
 /*videooooooooooooooooooooooooooooooooooooooooooooo*/
-#video {
+#webcam {
   width: 50%; /* 設置寬度 這邊要問歐文 相機的尺寸是多少 才不會壓縮 */  
   height: 250px; /* 設置高度 */
   background-color: #000000; /* 設置背景顏色 */
