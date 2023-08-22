@@ -150,7 +150,7 @@
     transform: translateX(-50%) scale(0.8);
   }
   
-  .reset {
+  .reset-bottom {
     position: absolute;
     top: 10px; /* 距離上方 10px */
     right: 50px; /* 距離右方 10px */
@@ -159,10 +159,11 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url('../icon/reset.png'); /* 設置按鈕圖片 */
     cursor: pointer;
     border: none; /* 移除按鈕邊框 */
   }
   
-  .reset:active{
+  .reset-bottom:active{
     transform: scale(0.8);
   }
