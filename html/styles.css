@@ -132,13 +132,13 @@ body {
   height: 512px; /* 設置高度 */
   transform: scale(0.5);
   background-color: #494949; /* 設置背景顏色 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   /* margin-top: 10px; */
   /* border-radius: 10px; */
-  position: absolute;
-  transition:all 0.5 ease;
+  /* position: absolute; */
+  /* transition:all 0.5 ease; */
 }
 
 #capture-button{
