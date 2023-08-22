@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     resetbutton.addEventListener('click', function(ev) {
         location.reload();
+        console.log('reset');
         ev.preventDefault();
     }, false);
 
