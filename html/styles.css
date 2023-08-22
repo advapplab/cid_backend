@@ -129,8 +129,13 @@ body {
   align-items: center;
   margin-top: 10px;
   border-radius: 10px;
-  position: absolute;
-  transition:all 0.2 ease;
+
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%) scale(0.5);
+
+  /* For positioning 10px away from the top */
+  top: 10px;
 }
 
 #capture-button{
