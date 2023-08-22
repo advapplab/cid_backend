@@ -158,6 +158,12 @@ body {
   transform: translateX(-50%) scale(0.8);
 }
 
+#canvas{
+  width: 768px; /* 設置寬度 這邊要問歐文 相機的尺寸是多少 才不會壓縮 */  
+  height: 512px; /* 設置高度 */
+  transform: scale(0.5);
+}
+
 #reset {
   position: absolute;
   top: 10px; /* 距離上方 10px */
