@@ -123,7 +123,6 @@ body {
 .containe_top {
   display: flex;
   justify-content: center; /* centers items horizontally */
-  align-items: center; /* centers items vertically */
   height: 0vh; /* takes full viewport height, you can adjust as needed */
 }
 
@@ -141,7 +140,7 @@ body {
   /* transition:all 0.5 ease; */
 }
 
-.capture-button{
+#capture-button{
   /* position: absolute;  */
   /* bottom: 20px;  */
   /* left: 50%;  */
@@ -155,7 +154,7 @@ body {
   cursor: pointer; 
 }
 
-.capture-button:active{
+#capture-button:active{
   transform: translateX(-50%) scale(0.8);
 }
 
