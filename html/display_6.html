@@ -428,7 +428,7 @@
                 };
 
 
-                fetchWithTimeout(url+'8829/submit', options, 60000) // 10-second timeout
+                fetchWithTimeout(url+'8829/submit', options, 600000) // 10-second timeout
                     .then(response => response.json())
                     .then(data => {
                         const imgElement = document.getElementById('ai_image_id');
@@ -444,7 +444,37 @@
 
 
 
-                getqrimage();
+                // console.log(data);
+                const postData = {
+                    // Example data to send with the request
+                    "filename": filename
+                };
+
+                const options = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(postData)
+                };
+
+                fetchWithTimeout(url+'8829/get_qr', options, 600000) // 10-second timeout
+                    .then(response => response.json())
+                    .then(data => {
+                        const imgElement = document.getElementById('qr_id');
+                        // Assuming your API returns the image as { image: 'BASE64_STRING' }
+                        imgElement.src = 'data:image/png;base64,' + data.image; // Change 'image/png' if your image is in a different format
+                    })
+                    .then(data => {
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.error('There was a problem with the fetch operation:', error.message);
+                    });
+
+
+
+                // getqrimage();
             } else {
                 clearphoto();
             }
@@ -482,33 +512,6 @@
 
         }
 
-        // async function getaiimage() {
-        //     // Define the data you want to send with the POST request
-        //     const postData = {
-        //         // Example data to send with the request
-        //         "filename": filename
-        //     };
-
-        //     // Fetch the base64 encoded image data from the RESTful API
-        //     const response = await fetch(url+'8829/get_ai', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(postData)
-        //     });
-
-        //     const data = await response.json();
-        //     console.log(data);
-
-        //     // Assuming the API returns a JSON object with the image data in a field called 'image'
-        //     const base64ImageData = data.image;
-
-        //     // Set the base64 data as the src of the image
-        //     const imageElement = document.getElementById('ai_image_id');
-        //     imageElement.src = 'data:image/png;base64,' + base64ImageData;
-        //     console.log(base64ImageData);
-        // }
 
         window.addEventListener('load', startup, false);
 
