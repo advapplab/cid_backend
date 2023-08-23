@@ -310,6 +310,7 @@
             photo.style.display = 'none';
             reset_button.style.display = 'none';
             ai_image_id.style.display = 'none';
+            qr_id.style.display = 'none';
 
             navigator.mediaDevices.getUserMedia({
                     video: true,
@@ -366,6 +367,7 @@
                 photo.style.display = 'block';
                 capture_button.style.display = 'none';
                 ai_image_id.style.display = 'block';
+                qr_id.style.display = 'block';
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
