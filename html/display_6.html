@@ -108,7 +108,7 @@
         
     }
 
-    #startbutton {
+    /* #startbutton {
         display: block;
         position: relative;
         margin-left: auto;
@@ -116,15 +116,12 @@
         bottom: 36px;
         padding: 5px;
         background-color: #6a67ce;
-        /* border: 1px solid rgba(255, 255, 255, 0.7); */
-        /* font-size: 14px; */
-        /* color: rgba(255, 255, 255, 1.0); */
         background-image: url('../icon/subject.png');
         cursor: pointer;
         z-index: 2;
-    }
+    } */
 
-    #resetbutton {
+    /* #resetbutton {
         display: block;
         position: relative;
         margin-left: auto;
@@ -137,7 +134,7 @@
         color: rgba(255, 255, 255, 1.0);
         cursor: pointer;
         z-index: 2;
-    }
+    } */
 
     #capture_button {
         position: absolute;
@@ -247,8 +244,8 @@
 
 
         <!-- <button id="capture_button">Take photo</button> -->
-        <button id="startbutton">Take photo</button>
-        <button id="resetbutton">Reset</button>
+        <!-- <button id="startbutton">Take photo</button> -->
+        <!-- <button id="resetbutton">Reset</button> -->
 
 
 
@@ -305,13 +302,11 @@
             capture_button = document.getElementById('capture_button');
             reset_button = document.getElementById('reset_button');
             
-            startbutton = document.getElementById('startbutton');
-            resetbutton = document.getElementById('resetbutton');
+            // startbutton = document.getElementById('startbutton');
+            // resetbutton = document.getElementById('resetbutton');
 
-            reset_button = document.getElementById('reset_button');
-
-            resetbutton.style.display = 'none';
-            startbutton.style.display = 'none';
+            // resetbutton.style.display = 'none';
+            // startbutton.style.display = 'none';
             photo.style.display = 'none';
             reset_button.style.display = 'none';
 
@@ -343,21 +338,17 @@
                 }
             }, false);
 
-            startbutton.addEventListener('click', function(ev) {
-                takepicture();
-                resetbutton.style.display = 'block';
-                startbutton.style.display = 'none';
-                ev.preventDefault();
-            }, false);
+            // startbutton.addEventListener('click', function(ev) {
+            //     takepicture();
+            //     resetbutton.style.display = 'block';
+            //     startbutton.style.display = 'none';
+            //     ev.preventDefault();
+            // }, false);
 
-            resetbutton.addEventListener('click', function(ev) {
-                location.reload();
-                // clearphoto()
-                // resetbutton.style.display = 'block';
-                // startbutton.style.display = 'none';
-                // const filename = Date.now().toString()+'.png';
-                ev.preventDefault();
-            }, false);
+            // resetbutton.addEventListener('click', function(ev) {
+            //     location.reload();
+            //     ev.preventDefault();
+            // }, false);
 
             reset_button.addEventListener('click', function(ev) {
                 location.reload();
@@ -394,7 +385,7 @@
             ai_image_id.setAttribute('src', data);
         }
 
-        function fetchWithTimeout(url, options, timeout = 5000) {
+        function fetchWithTimeout(url, options, timeout = 500000) {
             return new Promise((resolve, reject) => {
                 // Start the fetch request
                 const fetchPromise = fetch(url, options);
