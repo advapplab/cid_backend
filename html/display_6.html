@@ -428,7 +428,7 @@
                 };
 
 
-                fetchWithTimeout(url+'8829/submit', options, 600000) // 10-second timeout
+                fetchWithTimeout(url+'8829/submit', options, 60000) // 10-second timeout
                     .then(response => response.json())
                     .then(data => {
                         const imgElement = document.getElementById('ai_image_id');
@@ -444,33 +444,32 @@
 
 
 
-                // console.log(data);
-                postData = {
-                    // Example data to send with the request
-                    "filename": filename
-                };
+                // postData = {
+                // // Example data to send with the request
+                //     "filename": filename
+                // };
 
-                options = {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(postData)
-                };
+                // options = {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify(postData)
+                // };
 
-                fetchWithTimeout(url+'8829/get_qr', options, 600000) // 10-second timeout
-                    .then(response => response.json())
-                    .then(data => {
-                        const imgElement = document.getElementById('qr_id');
-                        // Assuming your API returns the image as { image: 'BASE64_STRING' }
-                        imgElement.src = 'data:image/png;base64,' + data.image; // Change 'image/png' if your image is in a different format
-                    })
-                    .then(data => {
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        console.error('There was a problem with the fetch operation:', error.message);
-                    });
+                // fetchWithTimeout(url+'8829/get_qr', options, 60000) // 10-second timeout
+                //     .then(response => response.json())
+                //     .then(data => {
+                //         const imgElement = document.getElementById('qr_id');
+                //         // Assuming your API returns the image as { image: 'BASE64_STRING' }
+                //         imgElement.src = 'data:image/png;base64,' + data.image; // Change 'image/png' if your image is in a different format
+                //     })
+                //     .then(data => {
+                //         console.log(data);
+                //     })
+                //     .catch(error => {
+                //         console.error('There was a problem with the fetch operation:', error.message);
+                //     });
 
 
 
