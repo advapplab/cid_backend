@@ -50,7 +50,7 @@
         position: absolute;
         border: 1px solid rgb(39, 24, 138);
         width: 1000px;
-        height: 300px;
+        height: 666px;
         left: 0px;
         top: 0px;
         display: block;
@@ -156,7 +156,7 @@
     }
 
     #capture_button:active {
-        transform: scale(-0.2);
+        transform: scale(0.3);
     }
 
     #reset_button {
@@ -309,6 +309,7 @@
             // startbutton.style.display = 'none';
             photo.style.display = 'none';
             reset_button.style.display = 'none';
+            ai_image_id.style.display = 'none';
 
             navigator.mediaDevices.getUserMedia({
                     video: true,
@@ -363,11 +364,12 @@
                 // location.reload();
                 // clearphoto()
                 photo.style.display = 'block';
-                reset_button.style.display = 'block';
                 capture_button.style.display = 'none';
+                ai_image_id.style.display = 'block';
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
+                reset_button.style.display = 'block';
                 ev.preventDefault();
             }, false);
 
