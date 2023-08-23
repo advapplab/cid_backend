@@ -413,13 +413,13 @@
                 photo.setAttribute('src', data);
 
                 // console.log(data);
-                const postData = {
+                postData = {
                     // Example data to send with the request
                     "webcam_image": data,
                     "filename": filename
                 };
 
-                const options = {
+                options = {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -445,12 +445,12 @@
 
 
                 // console.log(data);
-                const postData = {
+                postData = {
                     // Example data to send with the request
                     "filename": filename
                 };
 
-                const options = {
+                options = {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
