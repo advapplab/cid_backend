@@ -402,12 +402,17 @@
                 capture_button.style.display = 'none';
                 ai_image_id.style.display = 'block';
                 qr_id.style.display = 'block';
+
+                loading_icon.style.display = 'block';
+                notice.style.display = 'block';
+                
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
                 reset_button.style.display = 'block';
-                loading_icon.style.display = 'block';
-                notice.style.display = 'block';
+                
+                loading_icon.style.display = 'none';
+                notice.style.display = 'none';
                 ev.preventDefault();
             }, false);
 
@@ -452,10 +457,6 @@
                 var data = canvas.toDataURL('image/png');
                 photo.setAttribute('src', data);
 
-
-
-
-
                 getqrimage();
                 get_ai_image(data);
                 
@@ -493,8 +494,6 @@
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error.message);
                 });
-            loading_icon.style.display = 'none';
-            notice.style.display = 'none';
         }
 
         async function getqrimage() {
