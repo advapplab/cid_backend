@@ -57,6 +57,14 @@
         z-index: 1;
     }
 
+    #loading_icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        display: block;
+        z-index: 1;
+    }
+
     #canvas {
         display: none;
     }
@@ -252,6 +260,7 @@
         <div class="container_bottom">
             <img id="qr_id" alt="The qrcode will appear in this box.">
             <img id="ai_image_id" alt="The ai aimge will appear in this box.">
+            <img id="loading_icon" src="../icon/loading-gif">
         </div>
 
         <canvas id="canvas"></canvas>
@@ -301,6 +310,7 @@
             ai_image_id = document.getElementById('ai_image_id');
             capture_button = document.getElementById('capture_button');
             reset_button = document.getElementById('reset_button');
+            loading_icon = document.getElementById('loading_icon');
             
             // startbutton = document.getElementById('startbutton');
             // resetbutton = document.getElementById('resetbutton');
@@ -380,6 +390,7 @@
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
                 reset_button.style.display = 'block';
+                loading_icon.style.display = 'block';
                 ev.preventDefault();
             }, false);
 
