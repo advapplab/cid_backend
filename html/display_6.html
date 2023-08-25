@@ -411,7 +411,6 @@
                 takepicture();
                 reset_button.style.display = 'block';
                 
-                await sleep(10000); // Sleep for 10 seconds
                 loading_icon.style.display = 'none';
                 notice.style.display = 'none';
                 ev.preventDefault();
@@ -419,10 +418,7 @@
 
             clearphoto();
         }
-
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
+        
 
         function clearphoto() {
             var context = canvas.getContext('2d');
