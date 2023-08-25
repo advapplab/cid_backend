@@ -411,8 +411,6 @@
                 takepicture();
                 reset_button.style.display = 'block';
                 
-                loading_icon.style.display = 'none';
-                notice.style.display = 'none';
                 ev.preventDefault();
             }, false);
 
@@ -488,6 +486,11 @@
                     imgElement = document.getElementById('ai_image_id');
                     // Assuming your API returns the image as { image: 'BASE64_STRING' }
                     imgElement.src = 'data:image/png;base64,' + data.image; // Change 'image/png' if your image is in a different format
+
+                    loading_icon = document.getElementById('loading_icon');
+                    notice = document.getElementById('notice');
+                    loading_icon.style.display = 'none';
+                    notice.style.display = 'none';
                 })
                 .then(data => {
                     console.log(data);
