@@ -411,12 +411,17 @@
                 takepicture();
                 reset_button.style.display = 'block';
                 
+                await sleep(10000); // Sleep for 10 seconds
                 loading_icon.style.display = 'none';
                 notice.style.display = 'none';
                 ev.preventDefault();
             }, false);
 
             clearphoto();
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
         }
 
         function clearphoto() {
@@ -525,7 +530,6 @@
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error.message);
                 });
-
         }
 
 
