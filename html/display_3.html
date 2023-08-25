@@ -12,27 +12,46 @@
     }
 
     #video {
-        border: 1px solid black;
-        width: 320px;
-        height: 240px;
+        position: relative;
+        border: 0px solid black;
+        width: 768px;
+        height: 512px;
+        /* left: 20px; */
+        /* top: 0px; */
+        left: 50%;
+        transform: translateX(-50%);
+        display: block;
+        z-index: 2;
     }
 
     #photo {
-        border: 1px solid black;
-        width: 320px;
-        height: 320px;
+        position: relative;
+        border: 0px solid rgb(213, 31, 31);
+        width: 350px;
+        height: 100px;
+        left: 0px;
+        top: 0px;
+        display: block;
     }
 
     #qr_id {
-        border: 1px solid black;
-        width: 320px;
-        height: 320px;
+        position: relative;
+        border: 0px solid rgb(133, 197, 29);
+        width: 350px;
+        height: 200px;
+        left: 350px;
+        top: -100px;
+        display: block;
     }
 
     #ai_image_id {
-        border: 1px solid black;
-        width: 320px;
-        height: 320px;
+        position: relative;
+        border: 0px solid rgb(39, 24, 138);
+        width: 100px;
+        height: 100px;
+        left: 700px;
+        top: -200px;
+        display: block;
     }
 
     #canvas {
@@ -40,8 +59,13 @@
     }
 
     .camera {
-        width: 340px;
-        display: inline-block;
+        /* position: relative; */
+        position: absolute;
+        width: 1200px;
+        height: 512px;
+        left: 50%;
+        transform: translateX(-50%);
+        
     }
 
     .output {
@@ -59,6 +83,13 @@
         display: inline-block;
     }
 
+    .container_bottom {
+        position: relative;
+        width: 1000px;
+        height: 550px;
+        display: inline-block;
+    }
+
     #startbutton {
         display: block;
         position: relative;
@@ -67,10 +98,12 @@
         bottom: 36px;
         padding: 5px;
         background-color: #6a67ce;
-        border: 1px solid rgba(255, 255, 255, 0.7);
-        font-size: 14px;
-        color: rgba(255, 255, 255, 1.0);
+        /* border: 1px solid rgba(255, 255, 255, 0.7); */
+        /* font-size: 14px; */
+        /* color: rgba(255, 255, 255, 1.0); */
+        background-image: url('../icon/subject.png');
         cursor: pointer;
+        z-index: 2;
     }
 
     #resetbutton {
@@ -85,6 +118,40 @@
         font-size: 14px;
         color: rgba(255, 255, 255, 1.0);
         cursor: pointer;
+        z-index: 2;
+    }
+
+    #capture_button {
+        position: relative;
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 50px;
+        /* width: 100px;  */
+        /* height: 100px;  */
+        /* transform: scale(0.5); */
+        background-size: contain;
+        /* background-repeat: no-repeat; */
+        /* background-position: center; */
+        background-image: url('../icon/subject.png');
+        cursor: pointer;
+        border: none; 
+        z-index: 2;
+    }
+
+    #capture_button:active {
+        transform: scale(-0.8);
+    }
+
+    .black-box {
+        position: absolute;
+        top: 0;
+        width: 1000px;
+        height: 512px;
+        background-color: black;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .contentarea {
@@ -97,8 +164,7 @@
         font-size: 16px;
         font-family: Arial;
         text-align: center;
-        
-        background-image: url('background.jpeg'); 
+        background-image: url('../icon/back.png'); 
         height: 100vh; 
         background-position: center;
         background-repeat: no-repeat;
@@ -111,7 +177,7 @@
         and (max-device-width: 1024px) 
         and (orientation: portrait) {
             .background {
-                background-image: url('background.jpeg');
+                background-image: url('../icon/back.png');
             }
         }
 
@@ -121,9 +187,10 @@
         and (max-device-width: 1024px) 
         and (orientation: landscape) {
             .background {
-                background-image: url('background.jpeg');
+                background-image: url('../icon/back.png');
             }
         }
+
     </style>
     <title>My Future</title>
 </head>
@@ -131,30 +198,42 @@
 <body>
     <!-- <div class="background"></div> -->
     <div class="background">
-        <h1>
-            under development
-        </h1>
+
         <div class="camera">
             <video id="video">Video stream not available.</video>
+            <div class="black-box"></div>
+            <div id="capture_button"></div>
         </div>
-        <div><button id="startbutton">Take photo</button></div>
-        <div><button id="resetbutton">Reset</button></div>
 
+        <!-- <button id="capture_button">Take photo</button> -->
+        <button id="startbutton">Take photo</button>
+        <button id="resetbutton">Reset</button>
+
+
+
+        <div class="container_bottom">
+            <img id="photo" alt="The screen capture will appear in this box.">
+            <img id="qr_id" alt="The qrcode will appear in this box.">
+            <img id="ai_image_id" alt="The ai aimge will appear in this box.">
+        </div>
 
         <canvas id="canvas"></canvas>
 
-        <div class="output">
-            <img id="photo" alt="The screen capture will appear in this box.">
-        </div>
 
-        <div class="qr_class">
+        <!-- <div class="qr_class">
             <img id="qr_id" alt="The qrcode will appear in this box.">
         </div>
-
-        <br>
         <div class="ai_image_class">
             <img id="ai_image_id" alt="The ai aimge will appear in this box.">
         </div>
+
+        <div class="output">
+            <img id="photo" alt="The screen capture will appear in this box.">
+        </div> -->
+
+        <br>
+        
+        
 
 
     </div>
@@ -186,7 +265,10 @@
             
             startbutton = document.getElementById('startbutton');
             resetbutton = document.getElementById('resetbutton');
+
             resetbutton.style.display = 'none';
+            startbutton.style.display = 'none';
+            // photo.style.display = 'none';
 
             navigator.mediaDevices.getUserMedia({
                     video: true,
@@ -303,43 +385,6 @@
                         console.error('There was a problem with the fetch operation:', error.message);
                     });
 
-                // // Fetch the base64 encoded image data from the RESTful API
-                // response = fetch(url+'8829/submit', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify(postData)
-                // });
-
-                // data = response.json();
-                // console.log(data);
-                // // Assuming the API returns a JSON object with the image data in a field called 'image'
-                // const base64ImageData = data.image;
-
-                // // Set the base64 data as the src of the image
-                // const imageElement = document.getElementById('ai_image_id');
-                // imageElement.src = 'data:image/png;base64,' + base64ImageData;
-                // console.log(base64ImageData);
-
-
-
-                // fetch(url+'8829/submit', {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json',
-                //     },
-                //     body: JSON.stringify(postData),
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     const imgElement = document.getElementById('ai_image_id');
-                //     // Assuming your API returns the image as { image: 'BASE64_STRING' }
-                //     imgElement.src = 'data:image/png;base64,' + data.image; // Change 'image/png' if your image is in a different format
-                // })
-                // .catch(error => {
-                //     console.error('Error fetching image:', error);
-                // });
 
 
                 getqrimage();
@@ -380,40 +425,40 @@
 
         }
 
-        async function getaiimage() {
-            // Define the data you want to send with the POST request
-            const postData = {
-                // Example data to send with the request
-                "filename": filename
-            };
+        // async function getaiimage() {
+        //     // Define the data you want to send with the POST request
+        //     const postData = {
+        //         // Example data to send with the request
+        //         "filename": filename
+        //     };
 
-            // Fetch the base64 encoded image data from the RESTful API
-            const response = await fetch(url+'8829/get_ai', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            });
+        //     // Fetch the base64 encoded image data from the RESTful API
+        //     const response = await fetch(url+'8829/get_ai', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(postData)
+        //     });
 
-            const data = await response.json();
-            console.log(data);
+        //     const data = await response.json();
+        //     console.log(data);
 
-            // Assuming the API returns a JSON object with the image data in a field called 'image'
-            const base64ImageData = data.image;
+        //     // Assuming the API returns a JSON object with the image data in a field called 'image'
+        //     const base64ImageData = data.image;
 
-            // Set the base64 data as the src of the image
-            const imageElement = document.getElementById('ai_image_id');
-            imageElement.src = 'data:image/png;base64,' + base64ImageData;
-            console.log(base64ImageData);
-        }
+        //     // Set the base64 data as the src of the image
+        //     const imageElement = document.getElementById('ai_image_id');
+        //     imageElement.src = 'data:image/png;base64,' + base64ImageData;
+        //     console.log(base64ImageData);
+        // }
 
         window.addEventListener('load', startup, false);
 
-        async function imageGeneration() {
-            await getaiimage();
-            getqrimage();
-        }
+        // async function imageGeneration() {
+        //     await getaiimage();
+        //     getqrimage();
+        // }
 
         // runFunctionsInOrder();
 

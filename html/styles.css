@@ -5,164 +5,45 @@
 }
 
 body {
-  height: 100vh;
   overflow: hidden;
   background-image: url('../icon/back.png');
   background-size: cover
-  color: rgb(211, 211, 211);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* 
-.container {
-  width: 426.6px;
-  height: 284.5px;
-  perspective: 800px;
-  margin-top: -60px; 
-
-}
-
-.container:hover > .card {
-  cursor: pointer;
-  transform: rotateY(180deg);
 }
 
 
-.card {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  transition: transform 1500ms;
-  transform-style: preserve-3d;
-}
-
-.front,
-.back {
-  height: 100%;
-  width: 100%;
-  border-radius: 2rem;
-  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.front {
-  background-image: 'ai-image.png';
-}
-
-.back {
-  background-image: 'qrcode.png';
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
-}
-
-/* 將第一個 Flip Card 的底部間距增加 */
-.container:first-child {
-  margin-bottom: -35px; /* 調整您想要的間距大小 */
-}
-
-/* 新增一個 .container2 來包裹第二個 Flip Card */
-.container2 {
-  width: 426.6px;
-  height: 284.5px;
-  perspective: 800px;
-  margin-top: 55px; /* 調整您想要的間距大小 */
-}
-
-/* 調整第二個 Flip Card 的底部間距 */
-.container2 .card2 {
-  margin-bottom: 50px; /* 調整您想要的間距大小 */
-}
-
-.container2:hover > .card2 {
-  cursor: pointer;
-  transform: rotateY(180deg);
-}
-
-.card2 {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  transition: transform 1500ms;
-  transform-style: preserve-3d;
-}
-
-
-.front2,
-.back2 {
-  height: 100%;
-  width: 100%;
-  border-radius: 2rem;
-  box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.front2 {
-  background-image: 'ai-image-2.png';
-}
-
-.back2 {
-  background-image: 'qrcode-2.png';
-  transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5rem;
-} */
-
-/*videooooooooooooooooooooooooooooooooooooooooooooo*/
-
-.container_top {
-  display: flex;
-  justify-content: center; /* centers items horizontally */
-  height: 0vh; /* takes full viewport height, you can adjust as needed */
-}
 
 #webcam {
-  width: 768px; /* 設置寬度 這邊要問歐文 相機的尺寸是多少 才不會壓縮 */  
-  height: 512px; /* 設置高度 */
+  width: 768px; 
+  height: 512px; 
   transform: scale(0.5);
   background-color: #494949; /* 設置背景顏色 */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* margin-top: 10px; */
-  /* border-radius: 10px; */
-  /* position: absolute; */
-  /* transition:all 0.5 ease; */
 }
 
-#capture-button{
-  /* position: absolute;  */
-  /* bottom: 20px;  */
-  /* left: 50%;  */
-  transform: translateX(-50%); 
-  width: 70px; /* 按鈕寬度 */
-  height: 30px; /* 按鈕高度 */
-  bottom: 36px;
-  background-image: url('../icon/subject.png'); 
-  background-size: contain; 
-  background-repeat: no-repeat; 
-  background-position: center;
-  cursor: pointer; 
-}
-
-#capture-button:active{
-  transform: translateX(-50%) scale(0.8);
-}
 
 #canvas{
   width: 768px; /* 設置寬度 這邊要問歐文 相機的尺寸是多少 才不會壓縮 */  
   height: 512px; /* 設置高度 */
   transform: scale(0.5);
+  /* transform: translate(-50%, -50%); */
+}
+
+#capture_button {
+  position: absolute;
+  top: 30%; 
+  right: 50%; 
+  width: 100px; 
+  height: 100px; 
+  transform: scale(0.5);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../icon/subject.png'); /* 設置按鈕圖片 */
+  cursor: pointer;
+  border: none; /* 移除按鈕邊框 */
+}
+
+#capture_button:active{
+  transform: scale(0.8);
 }
 
 #reset {

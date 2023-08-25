@@ -492,6 +492,7 @@
                 .catch(error => {
                     console.error('There was a problem with the fetch operation:', error.message);
                 });
+            loading_icon.style.display = 'none';
         }
 
         async function getqrimage() {
