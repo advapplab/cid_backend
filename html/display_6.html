@@ -69,8 +69,8 @@
 
     #notice {
         position: absolute;
-        left: 50%;
-        top: 50%;
+        left: 40%;
+        top: 70%;
         display: block;
         z-index: 1;
     }
@@ -401,12 +401,12 @@
                 capture_button.style.display = 'none';
                 ai_image_id.style.display = 'block';
                 qr_id.style.display = 'block';
+                loading_icon.style.display = 'block';
+                notice.style.display = 'block';
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
                 reset_button.style.display = 'block';
-                loading_icon.style.display = 'block';
-                notice.style.display = 'block';
                 ev.preventDefault();
             }, false);
 
