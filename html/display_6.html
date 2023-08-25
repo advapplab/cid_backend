@@ -402,12 +402,12 @@
                 capture_button.style.display = 'none';
                 ai_image_id.style.display = 'block';
                 qr_id.style.display = 'block';
-                loading_icon.style.display = 'block';
-                notice.style.display = 'block';
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
                 reset_button.style.display = 'block';
+                loading_icon.style.display = 'block';
+                notice.style.display = 'block';
                 ev.preventDefault();
             }, false);
 
@@ -494,6 +494,7 @@
                     console.error('There was a problem with the fetch operation:', error.message);
                 });
             loading_icon.style.display = 'none';
+            notice.style.display = 'none';
         }
 
         async function getqrimage() {
