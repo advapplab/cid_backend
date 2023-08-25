@@ -27,10 +27,10 @@
     #photo {
         position: absolute;
         border: 1px solid rgb(255, 255, 255);
-        width: 100px;
-        height: 150px;
+        width: 150px;
+        height: 225px;
         left: 800px;
-        top: 350px;
+        top: 250px;
         display: block;
         z-index: 2;
     }
@@ -38,8 +38,8 @@
     #qr_id {
         position: absolute;
         border: 1px solid rgb(69, 91, 33);
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
         left: 700px;
         top: 20px;
         display: block;
@@ -58,6 +58,16 @@
     }
 
     #loading_icon {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        left: 50%;
+        top: 50%;
+        display: block;
+        z-index: 1;
+    }
+
+    #notice {
         position: absolute;
         left: 50%;
         top: 50%;
@@ -260,7 +270,9 @@
         <div class="container_bottom">
             <img id="qr_id" alt="The qrcode will appear in this box.">
             <img id="ai_image_id" alt="The ai aimge will appear in this box.">
-            <img id="loading_icon" src="../icon/loading-gif">
+            <img id="loading_icon" src="../icon/loading-gif.gif">
+            <p id="notice">Running on RTX4070, please wait.</p>
+
         </div>
 
         <canvas id="canvas"></canvas>
@@ -311,6 +323,7 @@
             capture_button = document.getElementById('capture_button');
             reset_button = document.getElementById('reset_button');
             loading_icon = document.getElementById('loading_icon');
+            notice = document.getElementById('notice');
             
             // startbutton = document.getElementById('startbutton');
             // resetbutton = document.getElementById('resetbutton');
@@ -321,6 +334,8 @@
             reset_button.style.display = 'none';
             ai_image_id.style.display = 'none';
             qr_id.style.display = 'none';
+            loading_icon.style.display = 'none';
+            notice.style.display = 'none';
 
             const constraints = {
                 video: {
@@ -391,6 +406,7 @@
                 takepicture();
                 reset_button.style.display = 'block';
                 loading_icon.style.display = 'block';
+                notice.style.display = 'block';
                 ev.preventDefault();
             }, false);
 
