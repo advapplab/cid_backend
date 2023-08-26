@@ -7,15 +7,15 @@
     /* CSS comes here */
 
     body, html {
-        height: 1000px;
+        height: 100%;
         margin: 0;
     }
 
     #video {
         position: relative;
         border: 0px solid black;
-        width: 50%;
-        height: 0;
+        width: 768px;
+        height: 512px;
         /* left: 20px; */
         /* top: 0px; */
         left: 50%;
@@ -40,7 +40,7 @@
         border: 1px solid rgb(69, 91, 33);
         width: 150px;
         height: 150px;
-        left: 800px;
+        left: 700px;
         top: 20px;
         display: block;
         z-index: 2;
@@ -82,8 +82,8 @@
     .camera {
         /* position: relative; */
         position: absolute;
-        width: 100%;
-        height: 50%;
+        width: 1200px;
+        height: 512px;
         left: 50%;
         transform: translateX(-50%);
         
@@ -200,8 +200,8 @@
         position: absolute;
         top: 0;
         left: 50%;
-        width: 100%;
-        height: 100%;
+        width: 1000px;
+        height: 512px;
         background-color: black;
         z-index: 1;
         transform: translateX(-50%);
@@ -218,8 +218,8 @@
         font-family: Arial;
         text-align: center;
         background-image: url('../icon/back.png'); 
-        height: 100%; 
-        width: 100%; 
+        height: 100vh; 
+        width: 100vh; 
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -409,7 +409,7 @@
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
-                // reset_button.style.display = 'block';
+                reset_button.style.display = 'block';
                 
                 ev.preventDefault();
             }, false);
@@ -489,10 +489,8 @@
 
                     loading_icon = document.getElementById('loading_icon');
                     notice = document.getElementById('notice');
-                    reset_button = document.getElementById('reset_button');
                     loading_icon.style.display = 'none';
                     notice.style.display = 'none';
-                    reset_button.style.display = 'block';
                 })
                 .then(data => {
                     console.log(data);
