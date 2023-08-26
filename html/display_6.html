@@ -409,7 +409,7 @@
                 // startbutton.style.display = 'none';
                 // const filename = Date.now().toString()+'.png';
                 takepicture();
-                reset_button.style.display = 'block';
+                // reset_button.style.display = 'block';
                 
                 ev.preventDefault();
             }, false);
@@ -489,8 +489,10 @@
 
                     loading_icon = document.getElementById('loading_icon');
                     notice = document.getElementById('notice');
+                    reset_button = document.getElementById('reset_button');
                     loading_icon.style.display = 'none';
                     notice.style.display = 'none';
+                    reset_button.style.display = 'block';
                 })
                 .then(data => {
                     console.log(data);
