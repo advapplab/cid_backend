@@ -26,7 +26,7 @@ mdb_pass = os.getenv('MONGODB_PASSWORD')
 mdb_host = os.getenv('MONGODB_HOST')
 mdb_dbs = os.getenv('MONGODB_DATABASE')
 
-sd_host = 'http://140.119.112.78:8824'
+sd_host = 'http://192.168.0.106:3000'
 sr_host = 'http://140.119.112.78:8828'
 
 app = Flask(__name__, static_folder="/")
@@ -201,8 +201,8 @@ def gen_ai(filename):
     while True:
 
         try: 
-            print(sd_api_host)
-            print(data)
+            # print(sd_api_host)
+            # print(data)
 
             response = submit_post(sd_api_host, data)
 
@@ -238,6 +238,44 @@ def gen_ai(filename):
     
     return image_base64
 
+def gen_ai_v2(filename):
+    print('gen ai image')
+    # choose a random 
+    option1 = random.choice(options_character)
+    option2 = random.choice(options_location)
+
+    # replace string
+    prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality"
+    prompt = prompt.replace("a person", option1).replace("in location", option2)
+    neg_prompt = "nude, (nsfw, deformed, distorted, disfigured:1.3), poorly drawn face, bad anatomy, wrong anatomy, extra limb, missing limb, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo, watermark, text, anime, illustration, sketch, 3d, vector art, cartoon, painting, large breasts, blurry, depth of field, "
+
+    data_dict = dict()
+    data_dict["prompt"]=prompt
+    data_dict["negative_prompt"]=neg_prompt
+    data_dict["sampler_name"]="DPM++ 2M Karras"
+    data_dict["steps"]=60
+    data_dict['cfg_scale']=8
+    data_dict['enable_hr']=True
+    data_dict['denoising_strength']= 0.7
+    data_dict['firstphase_width']= 768
+    data_dict['firstphase_height']= 512
+    data_dict['hr_resize_x']=1152
+    data_dict['hr_resize_y']= 768
+    data_dict["hr_scale"]= 2
+    data_dict["hr_second_pass_steps"]= 30
+    # data_dict['hr_upscaler']='SwinIR 4x'
+    data_dict['seed']= -1
+    data_dict['restore_faces']= True
+    data_dict['width']= 768
+    data_dict['height']= 512
+    data = data_dict
+
+    sd_api_host = sd_host+'/sdapi/v1/txt2img'
+    response = submit_post(sd_api_host, data)
+    image_base64 = response.json()['images'][0]
+
+    return image_base64
+
 def gen_qr(filename):
     print('gen qr code')
     qnap_url = '{}/share.cgi/{}?ssid=2ae29aaac2164743a4fa9945859f3fa7&fid=2ae29aaac2164743a4fa9945859f3fa7&path=%2F&filename={}&openfolder=normal&ep='.format(sr_host, filename, filename)
@@ -270,6 +308,53 @@ def gen_wc (filename, webcam_image_string):
         image_file.write(base64.b64decode(wc_image_base64_string))
 
     return wc_image_base64_string
+
+def face_swap (source_base64, target_base64):
+
+    # source: webcam
+    # target: ai image
+
+    data = dict()
+    data["source_image"] = source_base64
+    data["target_image"] = target_base64
+    data["face_index"] = [0]
+    data["scale"] = 1
+    data[upscale_visibility"] = 1
+    data["face_restorer"] = "None"
+    data["restorer_visibility"] = 1
+    data["model"] = "inswapper_128.onnx"
+
+    sd_api_host = sd_host+'/roop/image'
+    response = submit_post(sd_api_host, data)
+    output_base64 = response.json()['image']
+
+    return output_base64
+
+
+@app.route("/v2/submit", methods=['POST'])
+def submit():
+    # print(request)
+    jsonobj = request.get_json(silent=True)
+    filename = json.dumps(jsonobj['filename']).replace("\"", "")
+    webcam_image_string = json.dumps(jsonobj['webcam_image']).replace("\"", "")
+
+    # print(webcam_image)
+
+    ai_image_base64_string = gen_ai(filename)
+    wc_image_base64_string = gen_wc(filename, webcam_image_string)
+
+    output_base64 = face_swap (wc_image_base64_string, wc_image_base64_string)
+
+    # ai_image_np = base64_string_2_np(ai_image_base64_string)
+    # wc_image_np = base64_string_2_np(wc_image_base64_string)
+
+    res = dict()
+    res['image'] = output_base64
+    res = make_response(jsonify(res), 200)
+
+    return res
+
+    
 
 @app.route("/submit", methods=['POST'])
 def submit():
