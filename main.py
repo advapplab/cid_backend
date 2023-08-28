@@ -32,42 +32,85 @@ sr_host = 'http://140.119.112.78:8828'
 app = Flask(__name__, static_folder="/")
 CORS(app)  # This will enable CORS for all routes
 
+# options_character = ["a female doll", "a male doll", "a female warrior", "a prince", 'a male doctor', "a female doctor", 'a cyberpunk samurai', 'a steampunk samurai', 'Margot Robbie', 'Anne Hathaway',
+#                 'a princess", "a male mermaid', "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
+#                 'a robot  with a human face"', "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
+#                 'a male steampunk inventor', "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar',
+#                 'a male space farmer', "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn',
+#                 'a cyborg bride', "a cyborg groom", "a barbie doll", "a Ken doll", 'A tree spirit with a human face', 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman'
+#                 'an ice mage', 'an artist','A monk', 'a human dragon rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp',
+#                 'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie',
+#                 'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger',
+#                 'a working class labor', 'Anya Taylor Joy', 'Andrew Scott', 'Andy Lau', 'a beautiful girl', 'a beautiful boy', 'a beautiful woman', 'a beautiful man', 'a cute boy', 'a cute girl', 'a Korean star',
+#                 'a Kpop singer', 'a jpop singer', 'a cosplayer', 'an anime girl', 'a Japanese girl', 'a Korean man', 'a Korean girl', 'a stylish man', 'Freddie Mercury', 'Elton John', 'Mulan','Rapunzel',
+#                 'Ron Weasley', 'Draco Malfoy','Dracula', 'Elon Musk','Mark Zuckerberg','Donald Trump','Hilary Clinton', 'Joe Biden', 'Alexander Hamilton', 'William Shakespeare', 'Prince Hamlet', 'kim Jong Un',
+#                 'a dwarf', 'Wednesday Addams', 'a demon', 'Sherlock Holmes', 'James Moriarty', 'John Watson', 'Robert Oppenheimer', 'albert einstein', 'Confucius', 'James Bond','Sheldon Cooper', 'Elizabeth Bennet', 
+#                 'Fitzwilliam Darcy', 'Jay Gatsby', 'Edmond Dantès', 'Scarlett OHara', 'Frank Sinatra', 'Severus Snape', 'the Hatter', 'Red Queen', 'Michael Scott', 'Dwight Schrute', 'Bruce Wayne', "Luke Skywalker",
+#                 "Frodo Baggins", "Hermione Granger", "Darth Vader", "Katniss Everdeen", "Tony Stark (Iron Man)", "Princess Leia", "Winnie the Pooh", "Indiana Jones","Jack Sparrow", "Mickey Mouse", "Wonder Woman", 
+#                 "Batman", "Superman", "Gandalf", "Spider-Man", "Black Widow", "Elsa", "Captain Jack Harkness", "Dobby the House Elf", "Mulan", "Hannibal Lecter", "Shrek", "Edward Scissorhands","Katniss Everdeen", 
+#                 "Marty McFly", "John Wick", "Voldemort", "Forrest Gump", "James T. Kirk","Walter White", "Aragorn", "Gollum", "Dumbledore", 'Pete Mitchell', 'Ursula', "Maleficent", 'the Joker', "The Wicked Witch of the West",
+#                 'Ip Man'
+#                     ]
+
+# options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world', 'in food court', 'in a Mafia gun fight',
+#                     'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in a garden surrounded by alien plants', 'in Taroko canyon',
+#                     'in a space farm','in a snowy world', 'in fire world', 'in a ruin', 'in forest fire', "in front of a cyberpunk portal", 'on a music planet', 'in black hole', 'in a circus', 'in Liberty square', 'in huanted house',
+#                     'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101', 'in BLM protest', 
+#                     'a smoky dragon island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in a violent congress', 'in Hog Kong protest',
+#                     'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate', 'in Tiananmen Protest', 
+#                     'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a grand library filled with endless shelves of magical tomes', 'in a laundry store',
+#                     'in a mystical mirror chamber',  'A bridge perched at the edge of the world', 'in a plateau covered in colorful crystalline formation', 'in a traveling carnival', ' in a magical cathedral', 'in Mcdonald', 'in a strike',
+#                     'in a desert oasis', 'an alien glade', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in a protest', 'in an democratic world', 'in Pride parade',
+#                     'in the middle of a riot', 'in a peace sit-in protest', 'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world', 'in a nightmarket',
+#                     'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in front of Krusty Krab', 'in Japanese classroom', 'on a beach full of trash',
+#                     'in Asgard', 'in Orbit City', 'in Emerald City', 'in Hogsmeade Village', 'in Rivendell', 'in Shangri-La', 'in Tomorrowland', 'in Cloud City', 'in Gotham city', 'in Willy Wonka’s Factory', 'in front of The Gatsby Mansion',
+#                     'in the South park', 'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
+#                     'in NYSE', 'in a lab', 'in front of Doofenshimirtz Evil Co.', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert', 'in Times Sqaure', 'in Central Park', 'on The Millennium Falcon', "in Hawl's moving castle",
+#                     'at Niagara Falls', 'at Machu Picchu', 'at Venice Canals', 'at Pyramids of Giza', 'at The Burj Khalifa', 'at Taj Mahal', 'at Sydney Opera House', 'in front of Mount Fuji', "at St. Basil's Cathedral", 'at Neuschwanstein Castle',
+#                     'at Matterhorn', 'in a jungle village', 'in 1820 France ', 'at an Oceanic Abyss', 'in ancient Rome', 'in 1970s New York', 'in 1920s Chicago', 'in 1960s San Francisco', 'in a jazz club'
+#                     ]
+
 options_character = ["a female doll", "a male doll", "a female warrior", "a prince", 'a male doctor', "a female doctor", 'a cyberpunk samurai', 'a steampunk samurai', 'Margot Robbie', 'Anne Hathaway',
-                'a princess", "a male mermaid', "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
-                'a robot  with a human face"', "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
-                'a male steampunk inventor', "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar',
-                'a male space farmer', "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn',
-                'a cyborg bride', "a cyborg groom", "a barbie doll", "a Ken doll", 'A tree spirit with a human face', 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman'
-                'an ice mage', 'an artist','A monk', 'a human dragon rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp',
-                'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie',
-                'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger',
-                'a working class labor', 'Anya Taylor Joy', 'Andrew Scott', 'Andy Lau', 'a beautiful girl', 'a beautiful boy', 'a beautiful woman', 'a beautiful man', 'a cute boy', 'a cute girl', 'a Korean star',
-                'a Kpop singer', 'a jpop singer', 'a cosplayer', 'an anime girl', 'a Japanese girl', 'a Korean man', 'a Korean girl', 'a stylish man', 'Freddie Mercury', 'Elton John', 'Mulan','Rapunzel',
-                'Ron Weasley', 'Draco Malfoy','Dracula', 'Elon Musk','Mark Zuckerberg','Donald Trump','Hilary Clinton', 'Joe Biden', 'Alexander Hamilton', 'William Shakespeare', 'Prince Hamlet', 'kim Jong Un',
-                'a dwarf', 'Wednesday Addams', 'a demon', 'Sherlock Holmes', 'James Moriarty', 'John Watson', 'Robert Oppenheimer', 'albert einstein', 'Confucius', 'James Bond','Sheldon Cooper', 'Elizabeth Bennet', 
-                'Fitzwilliam Darcy', 'Jay Gatsby', 'Edmond Dantès', 'Scarlett OHara', 'Frank Sinatra', 'Severus Snape', 'the Hatter', 'Red Queen', 'Michael Scott', 'Dwight Schrute', 'Bruce Wayne', "Luke Skywalker",
-                "Frodo Baggins", "Hermione Granger", "Darth Vader", "Katniss Everdeen", "Tony Stark (Iron Man)", "Princess Leia", "Winnie the Pooh", "Indiana Jones","Jack Sparrow", "Mickey Mouse", "Wonder Woman", 
-                "Batman", "Superman", "Gandalf", "Spider-Man", "Black Widow", "Elsa", "Captain Jack Harkness", "Dobby the House Elf", "Mulan", "Hannibal Lecter", "Shrek", "Edward Scissorhands","Katniss Everdeen", 
-                "Marty McFly", "John Wick", "Voldemort", "Forrest Gump", "James T. Kirk","Walter White", "Aragorn", "Gollum", "Dumbledore", 'Pete Mitchell', 'Ursula', "Maleficent", 'the Joker', "The Wicked Witch of the West",
-                'Ip Man'
-                    ]
+                    'a princess", "a male mermaid', "a cyborg", "magician", 'steampunk doctor', 'an angel', 'a human with two horns','a vampire', 'a Frankenstein', 'Amber Heard', 'Thor', 'Loki',
+                    'a robot  with a human face"', "a fairy", "a male fairy", "a male astronaut", "a female astronaut", "a female steampunk inventor", "an elegant vampire", 'a evil vampire', 'Captain America',
+                    'a male steampunk inventor', "a crazy scientist", "a mafia man", "a space sailor", "an male engineer", "an female engineer", 'a rich man', 'a rich woman', 'Ryan Gosling', 'Avatar', "salesperson",
+                    'a male space farmer', "a female space farmer", "a time traveler", "a wizard", "a witch", "a male explorer", "a female explorer", 'a businessman', 'a businesswoman', 'Audrey Hepburn', 'a demon slayer',
+                    'a cyborg bride', "a cyborg groom", "a barbie doll", "a Ken doll", 'an alchemist', 'a super model', 'an emperor', 'a king', 'Godfather', 'Aquaman', 'a hunter',
+                    'an artist','A monk', 'a rider ','a pirate','an assassin', 'a blacksmith', 'a human with Rabbit ears', 'a mayor', 'a queen', 'Willy Wonka', 'Johnny Depp', 'a teacher',
+                    'a guardian','an earth guardian', 'a sky pirate', 'a drag queen','a sailor', 'a professor', 'a dictator', 'a soldier','a superhero', 'a president', 'a snow white', 'Angelina Jolie', 'a ballet dancer',
+                    'a medieval knight', 'a football player', 'a basketball player', 'a volleyball player', 'a singer', 'a gothic prince','a gothic princess', 'a character from the South Park', 'Hermione Granger', "physicist",
+                    'a working class labor', 'Anya Taylor Joy', 'Andrew Scott', 'Andy Lau', 'a beautiful man',  'a k-pop star',
+                    'a Kpop singer', 'a jpop singer', 'a cosplayer', 'a stylish man', 'Freddie Mercury', 'Elton John', 'Mulan','Rapunzel', "actor", "pilot",
+                    'Ron Weasley', 'Draco Malfoy','Dracula', 'Elon Musk','Mark Zuckerberg','Donald Trump','Hilary Clinton', 'Joe Biden', 'Alexander Hamilton', 'William Shakespeare', 'Prince Hamlet', 'kim Jong Un', "fashion designer", 
+                    'a dwarf', 'Wednesday Addams', 'a demon', 'Sherlock Holmes', 'James Moriarty', 'John Watson', 'Robert Oppenheimer', 'albert einstein', 'Confucius', 'James Bond','Sheldon Cooper', 'Elizabeth Bennet', "web developer",
+                    'Fitzwilliam Darcy', 'Jay Gatsby', 'Edmond Dantès', 'Scarlett OHara', 'Frank Sinatra', 'Severus Snape', 'the Hatter', 'Red Queen', 'Michael Scott', 'Dwight Schrute', 'Bruce Wayne', "Luke Skywalker",
+                    "Frodo Baggins", "Hermione Granger", "Katniss Everdeen", "Princess Leia", 'Barty Crouch Junior', 'a bartender' "Indiana Jones","Jack Sparrow", "Wonder Woman", "Superman", "Gandalf", "Spider-Man", "Black Widow", 
+                    "Mulan", "Hannibal Lecter", "Edward Scissorhands","Katniss Everdeen", "Marty McFly", "John Wick", "Voldemort", "Forrest Gump", "James T. Kirk","Walter White", "Aragorn", "Dumbledore", 'Pete Mitchell', 'Ursula', 
+                    "doctor", "teacher", "engineer", "nurse", "programmer", "chef", "artist", "scientist","writer", "musician", "lawyer", "police officer", "firefighter", "mechanic", "dentist", "architect", "designer", "accountant",
+                    "waiter/waitress", "pharmacist", "electrician", "veterinarian", "psychologist", "plumber", "photographer", "athlete", "journalist", "real estate agent", "banker", "farmer", "hairdresser", "chemist", "translator",
+                    "astronomer", "geologist", "mathematician", "paramedic", "professor", "electrician",'Ip Man', "archaeologist", "biologist", "chemist", "composer", "dancer", "economist", "editor", "electrician","entrepreneur", 
+                    "historian", "interior designer", "journalist", "judge", "lawyer", "linguist", "manager", "marine biologist", "mathematician", "meteorologist", "nutritionist", "optometrist", "painter", "paramedic", "pharmacist",
+                    "pilot", "plumber", "politician", "psychologist", "real estate agent", "researcher", "singer", "software developer","speech therapist", "surgeon", "teacher", "translator", "veterinarian", "video game designer", 
+                    "Elsa", "Captain Jack Harkness", "Maleficent", 'the Joker', "The Wicked Witch of the West", "chef", "economist", "librarian", "flight attendant", "social worker", "judge", "barista","filmmaker", "flight attendant",
+                    "florist", "geologist", "graphic designer", "writer", "yoga instructor", "zoologist"]
 
 options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world', 'in food court', 'in a Mafia gun fight',
                     'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in a garden surrounded by alien plants', 'in Taroko canyon',
                     'in a space farm','in a snowy world', 'in fire world', 'in a ruin', 'in forest fire', "in front of a cyberpunk portal", 'on a music planet', 'in black hole', 'in a circus', 'in Liberty square', 'in huanted house',
-                    'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101', 'in BLM protest', 
-                    'a smoky dragon island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in a violent congress', 'in Hog Kong protest',
-                    'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate', 'in Tiananmen Protest', 
-                    'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a grand library filled with endless shelves of magical tomes', 'in a laundry store',
-                    'in a mystical mirror chamber',  'A bridge perched at the edge of the world', 'in a plateau covered in colorful crystalline formation', 'in a traveling carnival', ' in a magical cathedral', 'in Mcdonald', 'in a strike',
-                    'in a desert oasis', 'an alien glade', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in a protest', 'in an democratic world', 'in Pride parade',
-                    'in the middle of a riot', 'in a peace sit-in protest', 'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world', 'in a nightmarket',
-                    'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in front of Krusty Krab', 'in Japanese classroom', 'on a beach full of trash',
+                    'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101',  
+                    'a smoky dragon island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in a violent congress', 'in Hog Kong ',
+                    'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate', 'in Tiananmen ', 
+                    'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a laundry store',
+                    'in a mystical mirror chamber', 'in a traveling carnival', ' in a magical cathedral', 'in Mcdonald', 'in a strike', 'in a drought world', 'in an earthquake', 'in a flood'
+                    'in a desert oasis', 'an alien glade', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in an democratic world', 'in Pride parade',
+                    'in the middle of a riot', 'in a peace sit-in protest', 'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world',
+                    'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in front of Krusty Krab', 'in Japanese classroom',
                     'in Asgard', 'in Orbit City', 'in Emerald City', 'in Hogsmeade Village', 'in Rivendell', 'in Shangri-La', 'in Tomorrowland', 'in Cloud City', 'in Gotham city', 'in Willy Wonka’s Factory', 'in front of The Gatsby Mansion',
-                    'in the South park', 'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
-                    'in NYSE', 'in a lab', 'in front of Doofenshimirtz Evil Co.', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert', 'in Times Sqaure', 'in Central Park', 'on The Millennium Falcon', "in Hawl's moving castle",
-                    'at Niagara Falls', 'at Machu Picchu', 'at Venice Canals', 'at Pyramids of Giza', 'at The Burj Khalifa', 'at Taj Mahal', 'at Sydney Opera House', 'in front of Mount Fuji', "at St. Basil's Cathedral", 'at Neuschwanstein Castle',
-                    'at Matterhorn', 'in a jungle village', 'in 1820 France ', 'at an Oceanic Abyss', 'in ancient Rome', 'in 1970s New York', 'in 1920s Chicago', 'in 1960s San Francisco', 'in a jazz club'
+                    'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
+                    'in NYSE', 'in a lab', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert', 'in Times Sqaure', 'in Central Park', 'on The Millennium Falcon', 
+                    'at Niagara Falls', 'at Machu Picchu', 'at Venice Canals', 'at Pyramids of Giza', 'at The Burj Khalifa', 'at Taj Mahal', 'at Sydney Opera House', 'in front of Mount Fuji', "at St. Basil's Cathedral", 
+                    'at Matterhorn', 'in a jungle village', 'in 1820 France ', 'at an Oceanic Abyss', 'in ancient Rome', 'in 1970s New York', 'in 1920s Chicago', 'in 1960s San Francisco', 'in a jazz club', "in Hawl's moving castle",
+                    'in a nightmarket', 'on a beach full of trash', 'at Neuschwanstein Castle',
                     ]
 
 def submit_post(url: str, data: dict):
@@ -247,7 +290,7 @@ def gen_ai_v2(filename):
     # replace string
     prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality"
     prompt = prompt.replace("a person", option1).replace("in location", option2)
-    neg_prompt = "nude, (nsfw, deformed, distorted, disfigured:1.3), poorly drawn face, bad anatomy, wrong anatomy, extra limb, missing limb, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo, watermark, text, anime, illustration, sketch, 3d, vector art, cartoon, painting, large breasts, blurry, depth of field, "
+    neg_prompt = "nude, nsfw, ng_deepnegative_v1_75t, (worst quality:2), (low quality:2), (normal quality:2), lowres, bad anatomy, normal quality, ((monochrome)), ((grayscale)), (verybadimagenegative_v1.3:0.8), negative_hand-neg, (lamp), badhandv4 "
 
     data_dict = dict()
     data_dict["prompt"]=prompt
@@ -340,10 +383,43 @@ def submit_v2():
 
     # print(webcam_image)
 
-    ai_image_base64_string = gen_ai(filename)
-    wc_image_base64_string = gen_wc(filename, webcam_image_string)
+    # ai_image_base64_string = gen_ai(filename)
+    wc_image_base64 = gen_wc(filename, webcam_image_string)
 
-    output_base64 = face_swap (wc_image_base64_string, wc_image_base64_string)
+    args=[wc_image_base64,True,'0','/stable-diffusion-webui/models/roop/inswapper_128.onnx','CodeFormer',1,None,1,'None',False,True]
+
+    option1 = random.choice(options_character)
+    option2 = random.choice(options_location)
+
+    prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality"
+    prompt = prompt.replace("a person", option1).replace("in location", option2)
+    neg_prompt = "nude, nsfw, ng_deepnegative_v1_75t, (worst quality:2), (low quality:2), (normal quality:2), lowres, bad anatomy, normal quality, ((monochrome)), ((grayscale)), (verybadimagenegative_v1.3:0.8), negative_hand-neg, (lamp), badhandv4 "
+
+    data_dict = dict()
+    data_dict["prompt"]=prompt
+    data_dict["negative_prompt"]=neg_prompt
+    data_dict["seed"]= -1
+    data_dict["sampler_name"]= "DPM++ 2M Karras"
+    data_dict["steps"]= 60
+    data_dict["cfg_scale"]= 8
+    data_dict['enable_hr']=True
+    data_dict['denoising_strength']= 0.7
+    data_dict['firstphase_width']= 1024
+    data_dict['firstphase_height']= 512 
+    data_dict['hr_resize_x']=1228
+    data_dict['hr_resize_y']= 614
+    data_dict["hr_scale"]= 2
+    data_dict["hr_second_pass_steps"]= 30
+    data_dict["width"]= 1024
+    data_dict["height"]= 512
+    data_dict["restore_faces"]= True,
+    data_dict["alwayson_scripts"]= {"roop":{"args":args}}  
+
+    txt2img_url = sd_host+'/sdapi/v1/txt2img'
+    response = submit_post(txt2img_url, data_dict)
+    output_base64 = response.json()['images'][0]
+
+    # output_base64 = face_swap (wc_image_base64_string, wc_image_base64_string)
 
     # ai_image_np = base64_string_2_np(ai_image_base64_string)
     # wc_image_np = base64_string_2_np(wc_image_base64_string)
