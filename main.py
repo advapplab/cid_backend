@@ -332,7 +332,7 @@ def face_swap (source_base64, target_base64):
 
 
 @app.route("/v2/submit", methods=['POST'])
-def submit():
+def submit_v2():
     # print(request)
     jsonobj = request.get_json(silent=True)
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
