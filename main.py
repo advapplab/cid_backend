@@ -373,6 +373,10 @@ def face_swap (source_base64, target_base64):
 
     return output_base64
 
+def save_image(image_base64, path, filename):
+    
+    with open(path+filename, "wb") as image_file:
+        image_file.write(base64.b64decode(image_base64))
 
 @app.route("/v2/submit", methods=['POST'])
 def submit_v2():
@@ -419,10 +423,9 @@ def submit_v2():
     response = submit_post(txt2img_url, data_dict)
     output_base64 = response.json()['images'][0]
 
-    # output_base64 = face_swap (wc_image_base64_string, wc_image_base64_string)
-
-    # ai_image_np = base64_string_2_np(ai_image_base64_string)
-    # wc_image_np = base64_string_2_np(wc_image_base64_string)
+    
+    save_image(output_base64, "../sd_image/output/", filename)
+    save_image(wc_image_base64, "../sd_image/photo/", filename)
 
     res = dict()
     res['image'] = output_base64
