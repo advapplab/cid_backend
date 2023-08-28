@@ -319,7 +319,7 @@ def face_swap (source_base64, target_base64):
     data["target_image"] = target_base64
     data["face_index"] = [0]
     data["scale"] = 1
-    data[upscale_visibility"] = 1
+    data["upscale_visibility"] = 1
     data["face_restorer"] = "None"
     data["restorer_visibility"] = 1
     data["model"] = "inswapper_128.onnx"
