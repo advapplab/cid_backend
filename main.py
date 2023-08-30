@@ -398,7 +398,7 @@ def submit_v2():
     prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality, 10K HDR"
     prompt = prompt.replace("a person", option1).replace("in location", option2)
     neg_prompt = "nude, nsfw, ng_deepnegative_v1_75t, (worst quality:2), (low quality:2), (normal quality:2), text, watermark, lowres, bad anatomy, normal quality, ((monochrome)), ((grayscale)), (verybadimagenegative_v1.3:0.8), negative_hand-neg, (lamp), badhandv4 "
-    
+
     data_dict = dict()
     data_dict["prompt"]=prompt
     data_dict["negative_prompt"]=neg_prompt
@@ -422,7 +422,7 @@ def submit_v2():
 
     txt2img_url = sd_host+'/sdapi/v1/txt2img'
     response = submit_post(txt2img_url, data_dict)
-    print(response.text)
+    # print(response.text)
     output_base64 = response.json()['images'][0]
     
     # save_image(output_base64, "../sd_image/v2/", filename)
