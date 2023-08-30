@@ -424,8 +424,11 @@ def submit_v2():
     print(response.text)
     output_base64 = response.json()['images'][0]
     
-    save_image(output_base64, "../sd_image/v2/", filename)
-    save_image(wc_image_base64, "../sd_image/webcam/", filename)
+    # save_image(output_base64, "../sd_image/v2/", filename)
+    # save_image(wc_image_base64, "../sd_image/webcam/", filename)
+
+    save_image(output_base64, "./ai_images/", filename)
+    save_image(wc_image_base64, "./webcam/", filename)
 
     res = dict()
     res['image'] = output_base64
