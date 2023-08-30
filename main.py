@@ -403,7 +403,7 @@ def submit_v2():
     data_dict["prompt"]=prompt
     data_dict["negative_prompt"]=neg_prompt
     data_dict["seed"]= -1
-    data_dict["sampler_name"]= "DPM++ SDE Karras"
+    data_dict["sampler_name"]= "DPM++ 2M Karras"
     data_dict["steps"]= 60
     data_dict["cfg_scale"]= 7
     data_dict['enable_hr']=True
