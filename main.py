@@ -416,7 +416,7 @@ def submit_v2():
     data_dict["hr_second_pass_steps"]= 30
     data_dict["width"]= 1024
     data_dict["height"]= 512
-    data_dict["restore_faces"]= "True",
+    data_dict["restore_faces"]= True
     data_dict["alwayson_scripts"]= {"roop":{"args":args}}  
 
     txt2img_url = sd_host+'/sdapi/v1/txt2img'
