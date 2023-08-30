@@ -156,7 +156,7 @@ def gen_qr_v2():
     filename = json.dumps(jsonobj['filename']).replace("\"", "")
     url = json.dumps(jsonobj['url']).replace("\"", "")
 
-    qnap_url = url + '/webcam/' + filename
+    qnap_url = url + '/ai_images/' + filename
 
     qr_img = qrcode.make(qnap_url)
     qr_img_base64 = image_to_base64(qr_img)
