@@ -148,6 +148,25 @@ def gen_qr():
 
     return res
 
+@app.route("/v2/get_qr", methods=['POST'])
+def gen_qr():
+
+    # print(request)
+    jsonobj = request.get_json(silent=True)
+    filename = json.dumps(jsonobj['filename']).replace("\"", "")
+    url = json.dumps(jsonobj['url']).replace("\"", "")
+
+    qnap_url = url + '/webcam/' + filename
+
+    qr_img = qrcode.make(qnap_url)
+    qr_img_base64 = image_to_base64(qr_img)
+
+    res = dict()
+    res['image'] = qr_img_base64
+    res = make_response(jsonify(res), 200)
+
+    return res
+
 @app.route("/get_ai", methods=['POST'])
 def gen_image():
 
@@ -318,6 +337,7 @@ def gen_ai_v2(filename):
     image_base64 = response.json()['images'][0]
 
     return image_base64
+
 
 def gen_qr(filename):
     print('gen qr code')
