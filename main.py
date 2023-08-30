@@ -422,10 +422,9 @@ def submit_v2():
     txt2img_url = sd_host+'/sdapi/v1/txt2img'
     response = submit_post(txt2img_url, data_dict)
     output_base64 = response.json()['images'][0]
-
     
-    save_image(output_base64, "../sd_image/output/", filename)
-    save_image(wc_image_base64, "../sd_image/photo/", filename)
+    save_image(output_base64, "../sd_image/v2/", filename)
+    save_image(wc_image_base64, "../sd_image/webcam/", filename)
 
     res = dict()
     res['image'] = output_base64
