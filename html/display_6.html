@@ -79,11 +79,13 @@
         display: none;
     }
 
-    .camera {
+    .container_camera {
         /* position: relative; */
         position: absolute;
-        width: 1200px;
-        height: 512px;
+        /* width: 1200px; */
+        /* height: 512px; */
+        width: 100vh;
+        height: 50vh;
         left: 50%;
         transform: translateX(-50%);
         
@@ -253,7 +255,7 @@
     <!-- <div class="background"></div> -->
     <div class="background">
 
-        <div class="camera">
+        <div class="container_camera">
             <video id="video">Video stream not available.</video>
             <div class="black-box"></div>
             <div id="capture_button"></div>
