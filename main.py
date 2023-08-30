@@ -26,7 +26,7 @@ mdb_pass = os.getenv('MONGODB_PASSWORD')
 mdb_host = os.getenv('MONGODB_HOST')
 mdb_dbs = os.getenv('MONGODB_DATABASE')
 
-sd_host = 'http://127.0.0.1:3000'
+sd_host = 'http://192.168.0.106:3000'
 sr_host = 'http://140.119.112.78:8828'
 
 app = Flask(__name__, static_folder="/")
