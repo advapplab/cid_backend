@@ -480,7 +480,7 @@
                 body: JSON.stringify(postData)
             };
 
-            fetchWithTimeout(url+'8829/submit', options, 90000) // 10-second timeout
+            fetchWithTimeout(url+'8829/v2/submit', options, 90000) // 10-second timeout
                 .then(response => response.json())
                 .then(data => {
                     imgElement = document.getElementById('ai_image_id');
