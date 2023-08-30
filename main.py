@@ -149,7 +149,7 @@ def gen_qr():
     return res
 
 @app.route("/v2/get_qr", methods=['POST'])
-def gen_qr():
+def gen_qr_v2():
 
     # print(request)
     jsonobj = request.get_json(silent=True)
