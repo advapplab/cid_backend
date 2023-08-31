@@ -367,7 +367,7 @@ def gen_wc (filename, webcam_image_string):
     # print(webcam_image)
     # print(filename)
 
-    path = './'
+    path = './tmp/'
     with open(path+filename, "wb") as image_file:
         image_file.write(base64.b64decode(wc_image_base64_string))
 
@@ -443,7 +443,7 @@ def submit_v2():
 
     txt2img_url = sd_host+'/sdapi/v1/txt2img'
     response = submit_post(txt2img_url, data_dict)
-    # print(response.text)
+    print(response.text)
     output_base64 = response.json()['images'][0]
     
     # save_image(output_base64, "../sd_image/v2/", filename)
