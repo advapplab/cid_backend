@@ -367,9 +367,9 @@ def gen_wc (filename, webcam_image_string):
     # print(webcam_image)
     # print(filename)
 
-    # path = '../sd_image/photo/'
-    # with open(path+filename, "wb") as image_file:
-        # image_file.write(base64.b64decode(wc_image_base64_string))
+    path = './'
+    with open(path+filename, "wb") as image_file:
+        image_file.write(base64.b64decode(wc_image_base64_string))
 
     return wc_image_base64_string
 
