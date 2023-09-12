@@ -95,24 +95,32 @@ options_character = ["a female doll", "a male doll", "a female warrior", "a prin
                     "Elsa", "Captain Jack Harkness", "Maleficent", 'the Joker', "The Wicked Witch of the West", "chef", "economist", "librarian", "flight attendant", "social worker", "a judge", "a barista","a filmmaker", "flight attendant",
                     "florist", "geologist", "graphic designer", "writer", "yoga instructor", "zoologist", ]
 
-options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world', 'in food court', 'in a Mafia gun fight',
-                    'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in Taroko canyon',
-                    'in a space farm','in a snowy world', 'in fire world', 'in a ruin', 'in forest fire', "in front of a cyberpunk portal", 'on a music planet', 'in black hole', 'in a circus', 'in Liberty square', 'in huanted house',
-                    'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101',  
-                    'a smoky island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in Hog Kong ',
-                    'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate', 'in Tiananmen ', 
-                    'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a laundry store',
-                    'in a mystical mirror chamber', 'in a traveling carnival', ' in a magical cathedral', 'in Mcdonald', 'in a strike', 'in a drought world', 'in an earthquake', 'in a flood'
-                    'in a desert oasis', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in an democratic world', 'in Pride parade',
-                    'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world',
-                    'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in Japanese classroom',
-                    'in Asgard', 'in Orbit City', 'in Emerald City', 'in Hogsmeade Village', 'in Rivendell', 'in Shangri-La', 'in Tomorrowland', 'in Cloud City', 'in Gotham city', 'in Willy Wonka’s Factory', 'in front of The Gatsby Mansion',
-                    'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
-                    'in NYSE', 'in a lab', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert', 'in Times Sqaure', 'in Central Park', 'on The Millennium Falcon', 
-                    'at Niagara Falls', 'at Machu Picchu', 'at Venice Canals', 'at Pyramids of Giza', 'at The Burj Khalifa', 'at Sydney Opera House', 'in front of Mount Fuji', "at St. Basil's Cathedral", 
-                    'at Matterhorn', 'in a jungle village', 'in 1820 France ', 'at an Oceanic Abyss', 'in ancient Rome', 'in 1970s New York', 'in 1920s Chicago', 'in 1960s San Francisco', 'in a jazz club', "in Hawl's moving castle",
-                    'in a nightmarket', 'on a beach full of trash', 'at Neuschwanstein Castle',
-                     ]
+# options_location = ['in the forest', 'in front of a neon building', 'in the steampunk factory', 'in the heaven', 'in the hell', 'in the space ship', 'in the space', 'in the colorful barbie world', 'in food court', 'in a Mafia gun fight',
+#                     'in the magnificent palace','in front of a luxurious palace', 'in the dynamic ocean world', 'in the underground world', 'in the colorful aquarium', 'in Taroko canyon',
+#                     'in a space farm','in a snowy world', 'in fire world', 'in a ruin', 'in forest fire', "in front of a cyberpunk portal", 'on a music planet', 'in black hole', 'in a circus', 'in Liberty square', 'in huanted house',
+#                     'in a magic cave', 'in colorful galaxy', 'in front of a supernova', 'in northpole', 'in an ice palace', 'in a cybepunk city', 'in a steampunk city', 'in an exotic market place', 'in front of Taipei 101',  
+#                     'a smoky island', 'in Hogwarts', 'in front of an exploding nuclear bomb', "in a riot", 'in a battlefield', 'in pure chaos', 'in a desert', 'in an underground labyrinth', 'in Hog Kong ',
+#                     'in a stardust night', 'in the rain', 'in front a waterfall', 'a floating flower world', 'in a colorful crystal cave', 'in a volcano', 'in a sky city', 'in a bustling intersection', 'in Rome Senate', 'in Tiananmen ', 
+#                     'in a space train station', 'on a floating island', 'in  front of a tower that pierces the sky', 'in a shifting maze of corridors', 'in a laundry store',
+#                     'in a mystical mirror chamber', 'in a traveling carnival', ' in a magical cathedral', 'in Mcdonald', 'in a strike', 'in a drought world', 'in an earthquake', 'in a flood'
+#                     'in a desert oasis', 'in a digital democratic world', 'in a totalitarian world', 'in a Utopia', 'in an equal world', 'in a capitalist world', 'in an democratic world', 'in Pride parade',
+#                     'in the crowded road', 'in an authoritarian state', 'on the volleyball court', 'in Chocolate factory', 'in a world made of candy', 'in a Post-apocalyptic world',
+#                     'in a gothic vampire castle', 'in a Cthulhu world', 'in Atlantis underwater world', 'in an arabian bazaar', 'in ancient Chinese palace', 'in Forbidden city', 'in Japanese classroom',
+#                     'in Asgard', 'in Orbit City', 'in Emerald City', 'in Hogsmeade Village', 'in Rivendell', 'in Shangri-La', 'in Tomorrowland', 'in Cloud City', 'in Gotham city', 'in Willy Wonka’s Factory', 'in front of The Gatsby Mansion',
+#                     'in Lilliput','in Jurassic park','in Quahog', 'in Kowloon Walled city', 'a burning house', 'a digital democratic world', 'a communist world', 'in a theater', 'in Scotland', 'in Taiwan', 'in UFO', 'in Buckingham Palace',
+#                     'in NYSE', 'in a lab', 'in Malibu beach', 'in Hollywood', 'in a kitchen', 'in a mining field', 'in a concert', 'in Times Sqaure', 'in Central Park', 'on The Millennium Falcon', 
+#                     'at Niagara Falls', 'at Machu Picchu', 'at Venice Canals', 'at Pyramids of Giza', 'at The Burj Khalifa', 'at Sydney Opera House', 'in front of Mount Fuji', "at St. Basil's Cathedral", 
+#                     'at Matterhorn', 'in a jungle village', 'in 1820 France ', 'at an Oceanic Abyss', 'in ancient Rome', 'in 1970s New York', 'in 1920s Chicago', 'in 1960s San Francisco', 'in a jazz club', "in Hawl's moving castle",
+#                     'in a nightmarket', 'on a beach full of trash', 'at Neuschwanstein Castle',
+#                      ]
+
+options_brand = ['wearing nike sneakers', 'wearing Adidas sneakers', 'wearing Balenciaga coat', 'wearing Chanel dress', 'weaing Hermes coat', 'wearing Coach shirt', 'wearing Polo Ralph Lauren', 'wearing Nike jacket', 'wearing Adidas jacket',
+                     'wearing Tommy Hilfiger jacket', 'wearing Hermes dress', 'carrying a Chloe bag', 'carrying a Tote bag', 'carrying a Louis Vutton bag', 'wearing a MuMu bag', 'wearing TIffany & Co. necklace',' wearing Rolex watch', 'wearing Tissot watch',
+                       'wearing Louis Vutton hat', 'wearing Patek Phillipe watch', 'wearing Hermes shirt', 'wearing Valentino shoes', 'wearing Valentino shirt', 'wearing Hugo Boss shirt', 'carrying Porter International backbag', 'wearing Dunhill tuxedo', 
+                        'wearing Nike sports outfits', 'wearing Puma sport outfits', 'wearing vera wang dress', 'carrying YSL purse','wearing Gucci sneakers',  'wearing Prada dress',    'carrying Fendi bag', 'wearing Zara jeans', 'wearing Versace sunglasses',
+                    'wearing Givenchy boots', 'wearing Dior scarf','carrying Burberry umbrella', 'wearing Armani suit', 'wearing Michael Kors watch','wearing Lacoste polo shirt','wearing Reebok sneakers', 'wearing Vans skateboard shoes',
+                    'wearing Timberland boots', 'wearing Levi\'s denim jacket', 'wearing Converse chuck taylor','wearing H&M shirt','carrying Kate Spade handbag', 'wearing Ralph Lauren belt', 'wearing ASICS running shoes','wearing Columbia jacket', 'wearing Under Armour sports gear', ]
+    
 
 def submit_post(url: str, data: dict):
     """
@@ -214,10 +222,12 @@ def gen_ai(filename):
     # choose a random 
     option1 = random.choice(options_character)
     option2 = random.choice(options_location)
+    option3 = random.choice(options_brand)
 
     # replace string
     prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality"
-    prompt = prompt.replace("a person", option1).replace("in location", option2)
+    # prompt = prompt.replace("a person", option1).replace("in location", option2)
+    prompt = prompt.replace("a person", option1).replace('brand', option3)#.replace("in location", option2).
     neg_prompt = "nude, (nsfw, deformed, distorted, disfigured:1.3), poorly drawn face, bad anatomy, wrong anatomy, extra limb, missing limb, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation. tattoo, watermark, text, anime, illustration, sketch, 3d, vector art, cartoon, painting, large breasts, blurry, depth of field, "
 
     # data = {"prompt": prompt,
@@ -246,17 +256,17 @@ def gen_ai(filename):
     data_dict['cfg_scale']=8
     data_dict['enable_hr']=True
     data_dict['denoising_strength']= 0.7
-    data_dict['firstphase_width']= 768
-    data_dict['firstphase_height']= 512
-    data_dict['hr_resize_x']=1152
-    data_dict['hr_resize_y']= 768
+    data_dict['firstphase_width']= 812
+    data_dict['firstphase_height']= 1024
+    data_dict['hr_resize_x']= 950
+    data_dict['hr_resize_y']= 1228
     data_dict["hr_scale"]= 2
     data_dict["hr_second_pass_steps"]= 30
     # data_dict['hr_upscaler']='SwinIR 4x'
     data_dict['seed']= -1
     data_dict['restore_faces']= True
-    data_dict['width']= 768
-    data_dict['height']= 512
+    data_dict['width']= 812
+    data_dict['height']= 1024
     data = data_dict
 
     sd_api_host = sd_host+'/sdapi/v1/txt2img'
