@@ -427,8 +427,9 @@ def submit_v2():
     # option2 = random.choice(options_location)
     option3 = random.choice(options_brand)
 
-    prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality, 10K HDR"
+    # prompt = "raw photo, a person, half body portrait, in location, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality, 10K HDR"
     # prompt = prompt.replace("a person", option1).replace("in location", option2)
+    prompt = "raw photo, fashion photo shoot, a person, brand, (medium shot, 10mm: 1.3), detailed background, facial detail, best quality, 10K HDR, cinematic lighting, natural shade and shadow, fashion"
     prompt = prompt.replace("a person", option1).replace('brand', option3)#.replace("in location", option2).
     neg_prompt = "nude, nsfw, ng_deepnegative_v1_75t, (worst quality:2), (low quality:2), (normal quality:2), text, watermark, lowres, bad anatomy, normal quality, ((monochrome)), ((grayscale)), (verybadimagenegative_v1.3:0.8), negative_hand-neg, (lamp), badhandv4 "
 
@@ -441,14 +442,14 @@ def submit_v2():
     data_dict["cfg_scale"]= 7
     data_dict['enable_hr']=True
     data_dict['denoising_strength']= 0.7
-    data_dict['firstphase_width']= 1024
-    data_dict['firstphase_height']= 512 
-    data_dict['hr_resize_x']=1228
-    data_dict['hr_resize_y']= 614
+    data_dict['firstphase_width']= 812
+    data_dict['firstphase_height']= 1024 
+    data_dict['hr_resize_x']=950
+    data_dict['hr_resize_y']= 1228
     data_dict["hr_scale"]= 2
     data_dict["hr_second_pass_steps"]= 30
-    data_dict["width"]= 1024
-    data_dict["height"]= 512
+    data_dict["width"]= 812
+    data_dict["height"]= 1024
     data_dict["restore_faces"]= True
     data_dict["override_settings"]= {"sd_model_checkpoint" :"copaxTimelessxlSDXL1_v46.safetensors [efc8193c6d]"}
     data_dict["alwayson_scripts"]= {"roop":{"args":args}}  
